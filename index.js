@@ -1,5 +1,6 @@
 require('dotenv').config()
 
+const express = require('express')
 const contentful = require('contentful')
 const client = contentful.createClient({
   // This is the space ID. A space is like a project folder in Contentful terms
@@ -8,4 +9,32 @@ const client = contentful.createClient({
   accessToken: process.env.CONTENTFUL_TOKEN,
 })
 // This API call will request an entry with the specified ID from the space defined at the top, using a space-specific access token.
-client.getEntries().then(console.log).catch(console.error)
+let CONTENT = []
+
+const app = express()
+
+app.get('/api', (req, res) => {
+  res.send(CONTENT)
+})
+const PORT = process.env.PORT || 3333
+
+client
+  .getEntries()
+  .then(({ items }) => {
+    // return obj.filter(o => o.sys)
+    CONTENT = items.filter((o) => {
+      // console.log(o.sys.contentType.sys)
+      return o.sys.contentType.sys.id == 'homepage'
+    })
+  })
+  .then(() => {
+    app.listen(PORT, (e) => {
+      if (e) {
+        console.error(e)
+        return
+      }
+
+      console.log(`Listening on http://localhost:${PORT}`)
+    })
+  })
+  .catch(console.error)
