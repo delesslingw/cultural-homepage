@@ -22,7 +22,7 @@ export const APIProvider = ({ children }) => {
   }, [])
   return (
     <Context.Provider value={{ content, isLoading }}>
-      {children}
+      {isLoading ? null : children}
     </Context.Provider>
   )
 }
