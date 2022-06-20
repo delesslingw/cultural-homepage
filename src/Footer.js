@@ -1,4 +1,4 @@
-import { COLORS } from './App'
+import COLORS from './COLORS'
 
 const Footer = () => {
   return (
