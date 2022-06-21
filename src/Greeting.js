@@ -7,87 +7,88 @@ const Dots = () => {
   const { content } = useAPI()
   const { width } = useWindowSize()
   console.log(width)
+  const r = width / 5
+
   return (
-    <>
+    <div
+      style={{
+        height: '100%',
+
+        display: 'grid',
+        placeItems: 'center',
+        padding: 20,
+      }}
+    >
       <Dot
-        r={681}
+        r={r + 31}
         style={{
-          position: 'absolute',
-          left: -150,
-          bottom: -200,
           backgroundColor: COLORS.navy,
         }}
-      />
-      <Dot
-        r={680}
-        style={{
-          position: 'absolute',
-          left: -150,
-          bottom: -200,
-          backgroundColor: COLORS.orange,
-        }}
-      />
-      <Dot
-        r={666}
-        style={{
-          position: 'absolute',
-          left: -150,
-          bottom: -200,
-          backgroundColor: COLORS.navy,
-        }}
-      />
-      <Dot
-        r={665}
-        style={{
-          position: 'absolute',
-          left: -150,
-          bottom: -200,
-          backgroundColor: COLORS.yellow,
-        }}
-      />
-      <Dot
-        r={651}
-        style={{
-          position: 'absolute',
-          left: -150,
-          bottom: -200,
-          backgroundColor: COLORS.navy,
-        }}
-      />
-      <Dot
-        r={650}
-        imgURL={`http:${content[0].fields.homepageHeroImage.fields.file.url}`}
-        style={{
-          position: 'absolute',
-          left: -150,
-          bottom: -200,
-        }}
-      />
-    </>
+      >
+        <Dot
+          r={r + 30}
+          style={{
+            backgroundColor: COLORS.orange,
+          }}
+        >
+          <Dot
+            r={r + 16}
+            style={{
+              backgroundColor: COLORS.navy,
+            }}
+          >
+            <Dot
+              r={r + 15}
+              style={{
+                backgroundColor: COLORS.yellow,
+              }}
+            >
+              <Dot
+                r={r + 1}
+                style={{
+                  backgroundColor: COLORS.navy,
+                }}
+              >
+                <Dot
+                  r={r}
+                  imgURL={`http:${content[0].fields.homepageHeroImage.fields.file.url}`}
+                  style={{}}
+                ></Dot>
+              </Dot>
+            </Dot>
+          </Dot>
+        </Dot>
+      </Dot>
+    </div>
   )
 }
 const Greeting = () => {
   const { content } = useAPI()
   console.log(content)
+  const { width } = useWindowSize()
   return (
     <section
       style={{
-        height: 400,
+        minHeight: 400,
 
         overflow: 'hidden',
         position: 'relative',
-        display: 'grid',
-        placeItems: 'stretch',
+        display: 'flex',
+        flexDirection: width < 800 ? 'column' : 'row',
+        justifyContent: 'space-around',
+
+        alignItems: 'stretch',
       }}
     >
       <Dots />
       <div
         style={{
-          paddingLeft: 300,
           display: 'flex',
           flexDirection: 'column',
           justifyContent: 'space-around',
           alignItems: 'center',
+          flex: 1,
+          paddingBottom: 20,
         }}
       >
         <h3
@@ -95,10 +96,10 @@ const Greeting = () => {
             fontSize: 100,
             textAlign: 'center',
             position: 'relative',
-
             fontFamily: "'Noto Sans', sans-serif",
             fontStyle: 'italic',
             fontWeight: 'bolder',
+            margin: 20,
           }}
         >
           Tαnakɛ!
@@ -107,7 +108,7 @@ const Greeting = () => {
           style={{
             zIndex: 10,
             position: 'relative',
-            width: '50%',
+            width: '80%',
             textAlign: 'center',
             fontSize: 20,
             fontFamily: "'Noto Sans', sans-serif",

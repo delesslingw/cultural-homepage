@@ -1,4 +1,4 @@
-const Dot = ({ imgURL, r, style }) => {
+const Dot = ({ imgURL, r, style, children }) => {
   return (
     <div
       style={{
@@ -8,9 +8,13 @@ const Dot = ({ imgURL, r, style }) => {
         backgroundImage: `url(${imgURL})`,
         backgroundSize: 'cover',
         backgroundPosition: 'center',
+        display: 'grid',
+        placeItems: 'center',
         ...style,
       }}
-    />
+    >
+      {children}
+    </div>
   )
 }
 export default Dot
