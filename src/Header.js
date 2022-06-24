@@ -1,6 +1,8 @@
 import COLORS from './COLORS'
+import useWindowSize from './useWindowSize'
 
 const Header = () => {
+  const { width } = useWindowSize()
   return (
     <header
       style={{
@@ -15,6 +17,8 @@ const Header = () => {
           color: COLORS.white,
           fontFamily: "'DM Serif Text', serif",
           fontSize: 30,
+          paddingTop: 10,
+          paddingBottom: 10,
         }}
       >
         Catawba Cultural Center

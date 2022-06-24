@@ -2,6 +2,7 @@ import Directory from './Directory'
 import Footer from './Footer'
 import Greeting from './Greeting'
 import Header from './Header'
+import Visit from './Visit'
 
 function App() {
   return (
@@ -9,7 +10,7 @@ function App() {
       <Header></Header>
       <Greeting />
       <Directory />
-      <section>Plan a Visit</section>
+      <Visit />
       <Footer></Footer>
     </div>
   )

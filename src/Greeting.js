@@ -32,6 +32,7 @@ const Greeting = () => {
 
         alignItems: 'stretch',
         backgroundColor: COLORS.yellow,
+        paddingBottom: 20,
       }}
     >
       <div
