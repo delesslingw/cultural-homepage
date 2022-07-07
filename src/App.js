@@ -9,8 +9,8 @@ function App() {
     <div className='App' style={{ position: 'relative' }}>
       <Header></Header>
       <Greeting />
-      <Directory />
-      <Visit />
+      {/* <Directory />
+      <Visit /> */}
       <Footer></Footer>
     </div>
   )

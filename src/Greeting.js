@@ -5,70 +5,49 @@ import RichText from './RichText'
 import useWindowSize from './useWindowSize'
 import Polaroid from './Polaroid'
 
-const Polaroids = () => {
-  const { content } = useAPI()
-  return content[0].fields.homepageHeroImage.reduce(
-    (acc, img) => [
-      <Polaroid imgURL={`http://${img.fields.file.url}`}>Tαnakɛ!</Polaroid>,
-      ...acc,
-    ],
-
-    []
-  )
-}
 const Greeting = () => {
   const { content } = useAPI()
   const { width } = useWindowSize()
+  const images = content[0].fields.homepageHeroImage
+  const img = images[2]
+  console.log('image?')
+  console.log(img)
   return (
-    <section
-      style={{
-        minHeight: 400,
-
-        overflow: 'hidden',
-        position: 'relative',
-        display: 'flex',
-        flexDirection: width < 800 ? 'column' : 'row',
-        justifyContent: 'stretch',
-
-        alignItems: 'stretch',
-        backgroundColor: COLORS.yellow,
-        paddingBottom: 20,
-      }}
-    >
+    <section>
       <div
         style={{
+          minHeight: 600,
+
           display: 'grid',
           placeItems: 'center',
-          margin: 50,
-          // width: 3.5 * 75,
-          flex: 1,
           position: 'relative',
-        }}
-      >
-        <Polaroid style={{ position: 'relative' }} />
-        <Polaroids />
-      </div>
-      <div
-        style={{
-          display: 'flex',
-          flexDirection: 'column',
-          justifyContent: 'space-around',
-          alignItems: 'center',
-          flex: 3,
-          paddingBottom: 20,
         }}
       >
         <div
           style={{
-            zIndex: 10,
-            position: 'relative',
-            width: '80%',
-            textAlign: 'center',
-            fontSize: 20,
-            fontFamily: "'Noto Sans', sans-serif",
-            lineHeight: 1.2,
+            width: '100%',
+            height: '100%',
+            backgroundImage: `url(http://${img.fields.file.url})`,
+            backgroundPosition: 'center',
+            backgroundSize: 'cover',
+            position: 'absolute',
           }}
-        >
+        ></div>
+      </div>
+      <div
+        style={{
+          backgroundColor: 'white',
+          width: '100%',
+          minHeight: 300,
+          textAlign: 'center',
+          fontSize: 25,
+          fontFamily: "'Noto Sans', sans-serif",
+          lineHeight: 1.5,
+          display: 'grid',
+          placeItems: 'center',
+        }}
+      >
+        <div style={{ width: '80%' }}>
           <RichText>{content[0].fields.homepageDescription.content}</RichText>
         </div>
       </div>
