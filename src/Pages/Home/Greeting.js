@@ -6,12 +6,11 @@ import RichText from '../../Components/RichText'
 import { useEffect, useState } from 'react'
 import useWindowSize from '../../hooks/useWindowSize'
 import Svg from '../../Components/Svg'
-const Link = ({ data }) => {
+const Link = ({ data, i }) => {
   const link = data
-  const [rate, setRate] = useState(1)
+  const rate = i * 0.05 + 0.5
   const [show, setShow] = useState(false)
   useEffect(() => {
-    setRate(Math.random())
     setShow(true)
   }, [])
   return (
@@ -31,8 +30,9 @@ const Link = ({ data }) => {
         marginTop: 10,
         marginRight: 10,
         position: 'relative',
+        opacity: show ? 1 : 0,
         bottom: show ? 0 : -50,
-        transition: `bottom 0.2s ease-in`,
+        transition: `opacity ${rate - 0.2}s ease-in, bottom ${rate}s ease-in`,
       }}
     >
       <div
@@ -56,7 +56,7 @@ const Links = () => {
   const { content } = useAPI()
 
   return content[0].fields.homepageLinks.map((link, i) => {
-    return <Link data={link} key={i} />
+    return <Link data={link} key={i} i={i} />
   })
 }
 
