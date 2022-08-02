@@ -6,10 +6,15 @@ import RichText from '../../Components/RichText'
 import { useEffect, useState } from 'react'
 import useWindowSize from '../../hooks/useWindowSize'
 import Svg from '../../Components/Svg'
-const Links = () => {
-  const { content } = useAPI()
-
-  return content[0].fields.homepageLinks.map((link, i) => (
+const Link = ({ data }) => {
+  const link = data
+  const [rate, setRate] = useState(1)
+  const [show, setShow] = useState(false)
+  useEffect(() => {
+    setRate(Math.random())
+    setShow(true)
+  }, [])
+  return (
     <a
       href={link.fields.linkUrl}
       style={{
@@ -19,13 +24,15 @@ const Links = () => {
         color: THEME.navy,
         ...THEME.Lato,
         boxShadow: '1px 1px 2px rgba(0,0,0,0.5)',
-
         display: 'flex',
         justifyContent: 'space-between',
         alignItems: 'center',
         overflow: 'hidden',
         marginTop: 10,
         marginRight: 10,
+        position: 'relative',
+        bottom: show ? 0 : -50,
+        transition: `bottom 0.2s ease-in`,
       }}
     >
       <div
@@ -43,7 +50,14 @@ const Links = () => {
         {link.fields.linkTitle}
       </span>
     </a>
-  ))
+  )
+}
+const Links = () => {
+  const { content } = useAPI()
+
+  return content[0].fields.homepageLinks.map((link, i) => {
+    return <Link data={link} key={i} />
+  })
 }
 
 const Greeting = () => {
@@ -156,7 +170,7 @@ const Greeting = () => {
         }}
       >
         <Svg
-          style={{ backgroundColor: THEME.navy }}
+          style={{ backgroundColor: THEME.navy, position: 'relative', top: -5 }}
           fill={THEME.blue}
           d='M0,224L48,197.3C96,171,192,117,288,117.3C384,117,480,171,576,202.7C672,235,768,245,864,245.3C960,245,1056,235,1152,213.3C1248,192,1344,160,1392,144L1440,128L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z'
         />

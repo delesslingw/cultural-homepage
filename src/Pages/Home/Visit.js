@@ -8,7 +8,7 @@ import Svg from '../../Components/Svg'
 const Visit = () => {
   const { content } = useAPI()
   const { width } = useWindowSize()
-  console.log(content[0].fields)
+
   const { visitDescription, visitHours, visitAddress } = content[0].fields
   return (
     <>
@@ -18,7 +18,7 @@ const Visit = () => {
         }}
       >
         <Svg
-          style={{ backgroundColor: THEME.white }}
+          style={{ backgroundColor: THEME.white, top: -5 }}
           fill={THEME.yellow}
           d='M0,96L48,112C96,128,192,160,288,192C384,224,480,256,576,261.3C672,267,768,245,864,224C960,203,1056,181,1152,186.7C1248,192,1344,224,1392,240L1440,256L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z'
         />
@@ -93,6 +93,12 @@ const Visit = () => {
             ></iframe>
           </div>
         </div>
+        <Svg
+          fill={THEME.navy}
+          style={{ backgroundColor: THEME.yellow }}
+          height={320}
+          d='M0,320L48,288C96,256,192,192,288,176C384,160,480,192,576,218.7C672,245,768,267,864,256C960,245,1056,203,1152,197.3C1248,192,1344,224,1392,240L1440,256L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z'
+        />
       </section>
     </>
   )
