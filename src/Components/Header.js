@@ -4,29 +4,44 @@ import THEME from '../THEME'
 import useWindowSize from '../hooks/useWindowSize'
 import { ReactComponent as Menu } from '../assets/menu.svg'
 import useAPI from '../hooks/useAPI'
-const Links = () => {
-  const { content } = useAPI()
-
-  return content[0].fields.homepageLinks.map((link, i) => (
+const Link = ({ data, i, showMenu }) => {
+  const link = data
+  const rate = i * 0.05 + 0.2
+  const [active, setActive] = useState(false)
+  const toggle = () => setActive((bool) => !bool)
+  return (
     <a
+      onMouseEnter={toggle}
+      onMouseLeave={toggle}
       href={link.fields.linkUrl}
       style={{
         paddingTop: 10,
         paddingBottom: 10,
         paddingLeft: 20,
         paddingRight: 20,
-        backgroundColor: THEME.white,
+        backgroundColor: active ? THEME.yellow : THEME.white,
         borderRadius: 50,
         textDecoration: 'none',
         color: THEME.navy,
         ...THEME.Lato,
         boxShadow: '1px 1px 2px rgba(0,0,0,0.5)',
         fontSize: 20,
+        position: 'relative',
+        top: showMenu ? 0 : -100,
+        opacity: showMenu ? 1 : 0,
+        transition: `top ${rate}s ease-in, opacity 0.3s ease-in, background-color 0.1s ease-in`,
       }}
     >
       {link.fields.linkTitle}
     </a>
-  ))
+  )
+}
+const Links = ({ showMenu }) => {
+  const { content } = useAPI()
+
+  return content[0].fields.homepageLinks.map((link, i) => {
+    return <Link data={link} i={i} showMenu={showMenu} />
+  })
 }
 const Header = () => {
   const { height } = useWindowSize()
@@ -108,7 +123,9 @@ const Header = () => {
             display: 'grid',
             placeItems: 'center',
             marginRight: 15,
-            transform: `rotate(${showMenu ? 0 : -90}deg)`,
+            transform: `rotate(${showMenu ? 0 : 90}deg)`,
+            transition: 'transform 0.2s ease-in',
+            cursor: 'pointer',
           }}
           onMouseDown={() => setShowMenu((bool) => !bool)}
         >
@@ -117,13 +134,13 @@ const Header = () => {
         <div
           style={{
             flex: 1,
-            display: showMenu ? 'flex' : 'none',
+            display: 'flex',
             justifyContent: 'space-around',
-            backgroundColor: THEME.navy,
-            position: 'relative',
+            backgroundColor: showMenu ? THEME.navy : 'transparent',
+            transition: 'background-color 0.2s ease-in',
           }}
         >
-          <Links />
+          <Links showMenu={showMenu} />
         </div>
       </div>
     </header>

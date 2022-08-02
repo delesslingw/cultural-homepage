@@ -10,14 +10,18 @@ const Link = ({ data, i }) => {
   const link = data
   const rate = i * 0.05 + 0.5
   const [show, setShow] = useState(false)
+  const [active, setActive] = useState(false)
+  const toggle = () => setActive((bool) => !bool)
   useEffect(() => {
     setShow(true)
   }, [])
   return (
     <a
+      onMouseEnter={toggle}
+      onMouseLeave={toggle}
       href={link.fields.linkUrl}
       style={{
-        backgroundColor: THEME.white,
+        backgroundColor: active ? THEME.yellow : THEME.white,
         borderRadius: 50,
         textDecoration: 'none',
         color: THEME.navy,
@@ -32,7 +36,9 @@ const Link = ({ data, i }) => {
         position: 'relative',
         opacity: show ? 1 : 0,
         bottom: show ? 0 : -50,
-        transition: `opacity ${rate - 0.2}s ease-in, bottom ${rate}s ease-in`,
+        transition: `opacity ${
+          rate - 0.2
+        }s ease-in, bottom ${rate}s ease-in, background-color 0.1s ease-in`,
       }}
     >
       <div
