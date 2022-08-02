@@ -51,11 +51,11 @@ const Header = () => {
   useEffect(() => {
     const handleScroll = () => {
       const position = window.pageYOffset
-      console.log(height)
-      if (position >= height - 50) {
+
+      if (position >= height - 150) {
         setHidden(false)
       }
-      if (position < height - 50) {
+      if (position < height - 150) {
         setHidden(true)
       }
     }
@@ -76,7 +76,7 @@ const Header = () => {
         zIndex: 10,
         width: '100%',
         top: hidden ? -100 : 0,
-        transition: 'top .5s',
+        transition: 'top .5s ease',
         paddingTop: 15,
         paddingBottom: 15,
       }}
