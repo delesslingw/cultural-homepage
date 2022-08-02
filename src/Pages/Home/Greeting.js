@@ -5,6 +5,7 @@ import RichText from '../../Components/RichText'
 
 import { useEffect, useState } from 'react'
 import useWindowSize from '../../hooks/useWindowSize'
+import Svg from '../../Components/Svg'
 const Links = () => {
   const { content } = useAPI()
 
@@ -44,21 +45,7 @@ const Links = () => {
     </a>
   ))
 }
-const Wave = ({ fill, style }) => {
-  return (
-    <svg
-      style={style}
-      xmlns='http://www.w3.org/2000/svg'
-      viewBox='0 0 1440 320'
-    >
-      <path
-        fill={fill}
-        fill-opacity='1'
-        d='M0,288L48,272C96,256,192,224,288,218.7C384,213,480,235,576,245.3C672,256,768,256,864,250.7C960,245,1056,235,1152,240C1248,245,1344,267,1392,277.3L1440,288L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z'
-      ></path>
-    </svg>
-  )
-}
+
 const Greeting = () => {
   const { content } = useAPI()
   const { width } = useWindowSize()
@@ -102,9 +89,9 @@ const Greeting = () => {
           }}
         >
           <div>
-            <Wave
-              style={{ position: 'relative', bottom: -40 }}
+            <Svg
               fill={THEME.navy}
+              d='M0,288L48,272C96,256,192,224,288,218.7C384,213,480,235,576,245.3C672,256,768,256,864,250.7C960,245,1056,235,1152,240C1248,245,1344,267,1392,277.3L1440,288L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z'
             />
             <div
               style={{
@@ -168,17 +155,12 @@ const Greeting = () => {
           placeItems: 'center',
         }}
       >
-        <svg
-          xmlns='http://www.w3.org/2000/svg'
-          viewBox='0 0 1440 320'
+        <Svg
           style={{ backgroundColor: THEME.navy }}
-        >
-          <path
-            fill={THEME.blue}
-            fill-opacity='1'
-            d='M0,224L48,197.3C96,171,192,117,288,117.3C384,117,480,171,576,202.7C672,235,768,245,864,245.3C960,245,1056,235,1152,213.3C1248,192,1344,160,1392,144L1440,128L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z'
-          ></path>
-        </svg>
+          fill={THEME.blue}
+          d='M0,224L48,197.3C96,171,192,117,288,117.3C384,117,480,171,576,202.7C672,235,768,245,864,245.3C960,245,1056,235,1152,213.3C1248,192,1344,160,1392,144L1440,128L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z'
+        />
+
         <div style={{ width: '80%' }}>
           <RichText>{content[0].fields.homepageDescription.content}</RichText>
         </div>
