@@ -15,6 +15,7 @@ export const APIProvider = ({ children }) => {
     fetch('/api')
       .then((o) => o.json())
       .then((o) => {
+        // TODO: Preload all of the images:https://jack72828383883.medium.com/how-to-preload-images-into-cache-in-react-js-ff1642708240
         setContent(o)
         setIsLoading(false)
       })
