@@ -1,16 +1,12 @@
-import Directory from './Directory'
-import Footer from './Footer'
-import Greeting from './Greeting'
-import Header from './Header'
-import Visit from './Visit'
+import Footer from './Components/Footer'
+import Header from './Components/Header'
+import Home from './Pages/Home'
 
 function App() {
   return (
     <div className='App' style={{ position: 'relative' }}>
       <Header></Header>
-      <Greeting />
-      <Directory />
-      <Visit />
+      <Home />
       <Footer></Footer>
     </div>
   )
