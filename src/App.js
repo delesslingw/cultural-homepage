@@ -3,11 +3,15 @@ import Header from './Components/Header'
 import Home from './Pages/Home'
 import { Routes, Route } from 'react-router-dom'
 import Library from './Pages/Library'
+import Classes from './Pages/Classes'
+import Programs from './Pages/Programs'
 function App() {
   return (
     <div className='App' style={{ position: 'relative' }}>
       <Header></Header>
       <Routes>
+        <Route path='/programs' element={<Programs />}></Route>
+        <Route path='/classes' element={<Classes />}></Route>
         <Route path='/library' element={<Library />}></Route>
         <Route path='/' exact element={<Home />}></Route>
       </Routes>

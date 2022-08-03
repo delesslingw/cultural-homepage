@@ -1,10 +1,10 @@
 import React from 'react'
 import THEME from '../../THEME'
 
-const Classes = () => {
-  const title = 'Cultural Classes',
+const Programs = () => {
+  const title = 'Public Programs',
     description =
-      'The Cultural Center provides classes to our community on everything from traditional skills - such as pottery, basketry, and foraging - but also other topics relevant to the Catawba community, such as recycling, gardening, history, archeaology, and more.'
+      'For millenia Catawbas have honored and cultivated a rich culture of storytelling. One way we honor that tradition today is through our many Public Programs which bring the experience of Catawba history and culture to our neighbors and other visitors to our home.'
 
   return (
     <section>
@@ -73,4 +73,4 @@ const Classes = () => {
   )
 }
 
-export default Classes
+export default Programs
