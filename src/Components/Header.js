@@ -5,7 +5,7 @@ import useWindowSize from '../hooks/useWindowSize'
 import { ReactComponent as Menu } from '../assets/menu.svg'
 import useAPI from '../hooks/useAPI'
 import { useLocation, useNavigate } from 'react-router-dom'
-
+const Icon = require('../assets/icon.png')
 const Link = ({ data, i, showMenu }) => {
   const link = data
   const rate = i * 0.05 + 0.2
@@ -98,9 +98,14 @@ const Header = () => {
         onMouseDown={() => navigate('/')}
       >
         <img
-          style={{ height: 50, display: hidden && 'none' }}
+          style={{
+            height: 30,
+            display: hidden && 'none',
+            marginLeft: 20,
+            marginRight: 20,
+          }}
           alt=''
-          src='./icon.png'
+          src={Icon}
         />
 
         <h1

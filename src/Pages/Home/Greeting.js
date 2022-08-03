@@ -6,6 +6,7 @@ import RichText from '../../Components/RichText'
 import { useEffect, useState } from 'react'
 import useWindowSize from '../../hooks/useWindowSize'
 import Svg from '../../Components/Svg'
+import Icon from '../../assets/icon.png'
 const Link = ({ data, i }) => {
   const link = data
   const rate = i * 0.05 + 0.5
@@ -72,6 +73,7 @@ const Greeting = () => {
   const images = content[0].fields.homepageHeroImage
   const [imageUrl, setImageUrl] = useState(images[0].fields.file.url)
   const [loaded, setLoaded] = useState(false)
+
   useEffect(() => {
     setLoaded(true)
     const int = setInterval(() => {
@@ -98,14 +100,16 @@ const Greeting = () => {
           style={{
             width: '100%',
             height: '100%',
-            backgroundImage: `url(http://${imageUrl})`,
+            backgroundColor: THEME.navy,
+            backgroundImage: loaded ? `url(http://${imageUrl})` : 'none',
             backgroundPosition: 'center',
             backgroundSize: 'cover',
+            // backgroundBlendMode: 'lighten',
             position: 'absolute',
             display: 'flex',
             flexDirection: 'column',
             justifyContent: 'flex-end',
-            transition: 'background 0.8s ease-in',
+            transition: 'all 0.8s ease-in',
           }}
         >
           <div>
@@ -122,11 +126,25 @@ const Greeting = () => {
                 position: 'relative',
               }}
             >
-              <img
-                style={{ width: '10vw', marginLeft: 30 }}
-                alt=''
-                src='./icon.png'
-              />
+              <div
+                style={{
+                  marginLeft: 30,
+                  marginRight: 30,
+                  width: '7.5vw',
+                  height: '7.5vw',
+                  display: 'grid',
+                  placeItems: 'center',
+                  position: 'relative',
+                  left: loaded ? 0 : '-50vw',
+                  transition: 'all 0.6s ease-in',
+                }}
+              >
+                <img
+                  style={{ width: '100%', height: '100%' }}
+                  alt=''
+                  src={Icon}
+                />
+              </div>
               <div style={{ display: 'flex', flexDirection: 'column' }}>
                 <h1
                   style={{
