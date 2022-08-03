@@ -15,7 +15,7 @@ const Svg = ({
       xmlns='http://www.w3.org/2000/svg'
       viewBox={`${minX} ${minY} ${width} ${height}`}
     >
-      <path fill={fill} fill-opacity='1' d={d}></path>
+      <path fill={fill} fillOpacity='1' d={d}></path>
     </svg>
   )
 }
