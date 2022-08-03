@@ -1,5 +1,4 @@
 import React from 'react'
-
 import useAPI from '../../hooks/useAPI'
 import FAQ from './FAQ'
 import Feature from './Feature'

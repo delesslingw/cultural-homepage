@@ -4,6 +4,8 @@ import THEME from '../THEME'
 import useWindowSize from '../hooks/useWindowSize'
 import { ReactComponent as Menu } from '../assets/menu.svg'
 import useAPI from '../hooks/useAPI'
+import { useLocation, useNavigate } from 'react-router-dom'
+
 const Link = ({ data, i, showMenu }) => {
   const link = data
   const rate = i * 0.05 + 0.2
@@ -44,19 +46,24 @@ const Links = ({ showMenu }) => {
   })
 }
 const Header = () => {
-  const { height } = useWindowSize()
+  const location = useLocation()
+  const isHome = location.pathname === '/'
 
-  const [hidden, setHidden] = useState(true)
-  const [showMenu, setShowMenu] = useState(false)
+  const { height } = useWindowSize()
+  const navigate = useNavigate()
+  const [hidden, setHidden] = useState(isHome ? true : false)
+  const [showMenu, setShowMenu] = useState()
   useEffect(() => {
     const handleScroll = () => {
-      const position = window.pageYOffset
+      if (isHome) {
+        const position = window.pageYOffset
 
-      if (position >= height - 150) {
-        setHidden(false)
-      }
-      if (position < height - 150) {
-        setHidden(true)
+        if (position >= height - 150) {
+          setHidden(false)
+        }
+        if (position < height - 150) {
+          setHidden(true)
+        }
       }
     }
     window.addEventListener('scroll', handleScroll)
@@ -64,7 +71,7 @@ const Header = () => {
     return () => {
       window.removeEventListener('scroll', handleScroll)
     }
-  }, [height])
+  }, [isHome, height])
   return (
     <header
       style={{
@@ -82,7 +89,13 @@ const Header = () => {
       }}
     >
       <div
-        style={{ display: 'flex', flexDirection: 'row', alignItems: 'center' }}
+        style={{
+          display: 'flex',
+          flexDirection: 'row',
+          alignItems: 'center',
+          cursor: 'pointer',
+        }}
+        onMouseDown={() => navigate('/')}
       >
         <img
           style={{ height: 50, display: hidden && 'none' }}
@@ -101,12 +114,13 @@ const Header = () => {
           Catawba Cultural Center
         </h1>
       </div>
+
       <div
         style={{
           position: 'absolute',
 
           height: '100%',
-          width: '100%',
+          width: showMenu ? '100%' : '70%',
           right: 0,
           display: 'flex',
           flexDirection: 'row-reverse',
