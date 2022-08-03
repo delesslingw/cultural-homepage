@@ -76,7 +76,7 @@ const Greeting = () => {
     setLoaded(true)
     const int = setInterval(() => {
       let curr = images.shift()
-      console.log(curr)
+      // console.log(curr)
       images.push(curr)
       setImageUrl(images[0].fields.file.url)
     }, 5000)

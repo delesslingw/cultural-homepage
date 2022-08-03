@@ -116,7 +116,7 @@ const Link = ({ link, i }) => {
 }
 const Directory = () => {
   const { content } = useAPI()
-  console.log(content[0].fields.homepageLinks)
+  // console.log(content[0].fields.homepageLinks)
   return (
     <section
       style={{

@@ -10,9 +10,9 @@ export const WindowSizeProvider = ({ children }) => {
   useEffect(() => {
     // Handler to call on window resize
     function handleResize() {
-      console.log('window resize?')
+      // console.log('window resize?')
       // Set window width/height to state
-      console.log(window.innerHeight)
+      // console.log(window.innerHeight)
       setWindowSize({
         width: window.innerWidth,
         height: window.innerHeight,

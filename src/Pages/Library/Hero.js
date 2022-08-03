@@ -3,7 +3,7 @@ import Svg from '../../Components/Svg'
 import THEME from '../../THEME'
 
 const Hero = ({ title, description, image }) => {
-  console.log(image)
+  // console.log(image)
   return (
     <div
       style={{

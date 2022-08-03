@@ -8,7 +8,7 @@ import Resources from './Resources'
 const Library = () => {
   const { content } = useAPI()
   const { libraryTitle, libraryDescription, libraryImages } = content[0].fields
-  console.log(content[0].fields)
+  // console.log(content[0].fields)
   return (
     <section>
       <Hero
