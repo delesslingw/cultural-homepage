@@ -42,7 +42,7 @@ const Links = ({ showMenu }) => {
   const { content } = useAPI()
 
   return content[0].fields.homepageLinks.map((link, i) => {
-    return <Link data={link} i={i} showMenu={showMenu} />
+    return <Link data={link} key={i} i={i} showMenu={showMenu} />
   })
 }
 const Header = () => {

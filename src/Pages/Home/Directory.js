@@ -143,7 +143,7 @@ const Directory = () => {
         }}
       >
         {content[0].fields.homepageLinks.map((link, i) => (
-          <Link link={link} i={i} />
+          <Link link={link} i={i} key={i} />
         ))}
       </div>
     </section>
