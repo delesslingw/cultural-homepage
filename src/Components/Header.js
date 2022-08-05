@@ -19,6 +19,20 @@ const Link = ({ data, i, showMenu }) => {
       onMouseLeave={toggle}
       href={link.fields.linkUrl}
       style={{
+        backgroundColor: active ? THEME.yellow : THEME.white,
+        borderRadius: 50,
+        textDecoration: 'none',
+        color: THEME.navy,
+        ...THEME.Lato,
+        boxShadow: '1px 1px 2px rgba(0,0,0,0.5)',
+        fontSize: { xl: 20, lg: 20, md: 16, sm: 12, xs: 12 }[breakpoint],
+        position: 'relative',
+        top: showMenu ? 0 : -100,
+        opacity: showMenu ? 1 : 0,
+        transition: `top ${rate}s ease-in, opacity 0.3s ease-in, background-color 0.1s ease-in`,
+
+        display: 'grid',
+        placeItems: 'center',
         ...{
           xl: {
             paddingTop: 10,
@@ -39,25 +53,10 @@ const Link = ({ data, i, showMenu }) => {
             padding: 9,
           },
           xs: {
-            padding: 5,
-            marginBottom: 5,
+            padding: 10,
+            margin: 5,
           },
         }[breakpoint],
-
-        backgroundColor: active ? THEME.yellow : THEME.white,
-        borderRadius: 50,
-        textDecoration: 'none',
-        color: THEME.navy,
-        ...THEME.Lato,
-        boxShadow: '1px 1px 2px rgba(0,0,0,0.5)',
-        fontSize: { xl: 20, lg: 20, md: 16, sm: 14, xs: 12 }[breakpoint],
-        position: 'relative',
-        top: showMenu ? 0 : -100,
-        opacity: showMenu ? 1 : 0,
-        transition: `top ${rate}s ease-in, opacity 0.3s ease-in, background-color 0.1s ease-in`,
-
-        display: 'grid',
-        placeItems: 'center',
       }}
     >
       {link.fields.linkTitle}
@@ -118,47 +117,10 @@ const Header = () => {
     >
       <div
         style={{
-          display: 'flex',
-          flexDirection: 'row',
-          alignItems: 'center',
-          cursor: 'pointer',
-
-          transition: 'all 0.2s ease',
-          position: 'relative',
-          left: showMenu ? -200 : 0,
-          transition: 'all 0.2s ease',
-        }}
-        onMouseDown={() => navigate('/')}
-      >
-        <img
-          style={{
-            height: 30,
-            marginLeft: 20,
-            marginRight: 20,
-          }}
-          alt=''
-          src={Icon}
-        />
-
-        <h1
-          style={{
-            opacity: hidden ? 0 : 1,
-            color: THEME.white,
-            ...THEME.DMSerif,
-            fontSize: 20,
-            transition: 'all 0.2s ease',
-          }}
-        >
-          Catawba Cultural Center
-        </h1>
-      </div>
-
-      <div
-        style={{
           position: 'absolute',
 
           height: '100%',
-          width: showMenu ? '100%' : '70%',
+          width: '100%',
           right: 0,
           display: 'flex',
           flexDirection: 'row-reverse',
@@ -205,6 +167,40 @@ const Header = () => {
         >
           <Links showMenu={showMenu} />
         </div>
+      </div>
+      <div
+        style={{
+          display: 'flex',
+          flexDirection: 'row',
+          alignItems: 'center',
+          cursor: 'pointer',
+          position: 'absolute',
+          left: showMenu ? -2000 : 0,
+          transition: 'all 0.2s ease',
+        }}
+        onMouseDown={() => navigate('/')}
+      >
+        <img
+          style={{
+            height: 30,
+            marginLeft: 20,
+            marginRight: 20,
+          }}
+          alt=''
+          src={Icon}
+        />
+
+        <h1
+          style={{
+            opacity: hidden ? 0 : 1,
+            color: THEME.white,
+            ...THEME.DMSerif,
+            fontSize: 20,
+            transition: 'all 0.2s ease',
+          }}
+        >
+          Catawba Cultural Center
+        </h1>
       </div>
     </header>
   )

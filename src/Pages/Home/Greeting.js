@@ -7,6 +7,7 @@ import { useEffect, useState } from 'react'
 import useWindowSize from '../../hooks/useWindowSize'
 import Svg from '../../Components/Svg'
 import Icon from '../../assets/icon.png'
+import useBreakpoints from '../../hooks/useBreakpoints'
 const Link = ({ data, i }) => {
   const link = data
   const rate = i * 0.05 + 0.5
@@ -69,7 +70,7 @@ const Links = () => {
 
 const Greeting = () => {
   const { content } = useAPI()
-  const { width } = useWindowSize()
+  const { breakpoint } = useBreakpoints()
   const images = content[0].fields.homepageHeroImage
   const [imageUrl, setImageUrl] = useState(images[0].fields.file.url)
   const [loaded, setLoaded] = useState(false)
@@ -122,7 +123,7 @@ const Greeting = () => {
                 backgroundColor: THEME.navy,
 
                 display: 'flex',
-                alignItems: width < 1200 ? 'flex-start' : 'center',
+                alignItems: 'flex-start',
                 position: 'relative',
               }}
             >
@@ -130,17 +131,26 @@ const Greeting = () => {
                 style={{
                   marginLeft: 30,
                   marginRight: 30,
-                  width: '7.5vw',
-                  height: '7.5vw',
+
                   display: 'grid',
                   placeItems: 'center',
                   position: 'relative',
                   left: loaded ? 0 : '-50vw',
-                  transition: 'all 0.6s ease-in',
+                  transition: 'all 0.2s ease-in',
                 }}
               >
                 <img
-                  style={{ width: '100%', height: '100%' }}
+                  style={{
+                    width: 75,
+                    height: 75,
+                    ...{
+                      xl: {},
+                      lg: {},
+                      md: {},
+                      sm: {},
+                      xs: {},
+                    }[breakpoint],
+                  }}
                   alt=''
                   src={Icon}
                 />
