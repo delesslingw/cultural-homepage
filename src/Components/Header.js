@@ -139,12 +139,14 @@ const Header = () => {
             width: 50,
             borderRadius: 50,
             backgroundColor: THEME.white,
-            display: 'grid',
-            placeItems: 'center',
             marginRight: 15,
             transform: `rotate(${showMenu ? 0 : 90}deg)`,
             transition: 'transform 0.2s ease-in',
             cursor: 'pointer',
+
+            display: 'grid',
+            placeItems: 'center',
+            position: 'absolute',
           }}
           onMouseDown={() => setShowMenu((bool) => !bool)}
         >
@@ -157,6 +159,7 @@ const Header = () => {
             justifyContent: 'space-around',
             backgroundColor: showMenu ? THEME.navy : 'transparent',
             transition: 'background-color 0.2s ease-in',
+            marginRight: 75,
           }}
         >
           <Links showMenu={showMenu} />
