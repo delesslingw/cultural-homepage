@@ -14,7 +14,7 @@ const Footer = () => {
         textAlign: 'center',
       }}
     >
-      <h3 style={{ minHeight: 50, display: 'grid', placeItems: 'center' }}>
+      <h3 style={{ display: 'grid', placeItems: 'center', padding: 36 }}>
         The Catawba Cultural Center and its programs and facilities are managed
         by the Cultural Division of Catawba Nation
       </h3>

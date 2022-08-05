@@ -1,74 +1,28 @@
-import React from 'react'
+import React, { useState } from 'react'
 import THEME from '../../THEME'
+import Hero from './Hero'
+import Request from './Request'
 
 const Programs = () => {
-  const title = 'Public Programs',
-    description =
-      'For millenia Catawbas have honored and cultivated a rich culture of storytelling. One way we honor that tradition today is through our many Public Programs which bring the experience of Catawba history and culture to our neighbors and other visitors to our home.'
-
   return (
     <section>
-      <div
+      <Hero />
+      <Request />
+      <svg
         style={{
-          height: '100vh',
-
-          display: 'flex',
-          flexDirection: 'column',
-          justifyContent: 'flex-end',
-          // backgroundImage: `url(${image})`,
-          backgroundSize: 'cover',
-          backgroundPosition: 'center',
-          backgroundColor: THEME.yellow,
+          backgroundColor: THEME.white,
+          position: 'relative',
+          top: -5,
         }}
+        xmlns='http://www.w3.org/2000/svg'
+        viewBox='0 0 1440 320'
       >
-        <svg
-          xmlns='http://www.w3.org/2000/svg'
-          viewBox='0 0 1440 320'
-          style={{ position: 'absolute' }}
-        >
-          <path
-            fill={THEME.blue}
-            fillOpacity='1'
-            d='M0,288L48,288C96,288,192,288,288,282.7C384,277,480,267,576,224C672,181,768,107,864,74.7C960,43,1056,53,1152,48C1248,43,1344,21,1392,10.7L1440,0L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z'
-          ></path>
-        </svg>
-        <div
-          style={{
-            height: '100%',
-            display: 'flex',
-            flexDirection: 'column',
-            justifyContent: 'flex-end',
-            alignItems: 'flex-end',
-            paddingBottom: 50,
-            paddingRight: 50,
-            zIndex: 5,
-          }}
-        >
-          <h2 style={{ ...THEME.DMSerif, fontSize: 40, paddingBottom: 25 }}>
-            {title}
-          </h2>
-          <p
-            style={{
-              width: '40%',
-              ...THEME.Lato,
-              fontSize: 16,
-              textAlign: 'right',
-            }}
-          >
-            {description}
-          </p>
-          {/* <p
-          style={{
-            width: '40%',
-            ...THEME.Lato,
-            fontSize: 16,
-            textAlign: 'right',
-          }}
-        >
-          <RichText>{description.content}</RichText>
-        </p> */}
-        </div>
-      </div>
+        <path
+          fill={THEME.navy}
+          fillOpacity='1'
+          d='M0,320L30,282.7C60,245,120,171,180,128C240,85,300,75,360,58.7C420,43,480,21,540,32C600,43,660,85,720,96C780,107,840,85,900,106.7C960,128,1020,192,1080,208C1140,224,1200,192,1260,197.3C1320,203,1380,245,1410,266.7L1440,288L1440,320L1410,320C1380,320,1320,320,1260,320C1200,320,1140,320,1080,320C1020,320,960,320,900,320C840,320,780,320,720,320C660,320,600,320,540,320C480,320,420,320,360,320C300,320,240,320,180,320C120,320,60,320,30,320L0,320Z'
+        ></path>
+      </svg>
     </section>
   )
 }

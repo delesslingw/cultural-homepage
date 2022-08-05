@@ -1,0 +1,335 @@
+<html>
+  <head>
+    <meta charset="UTF-8" />
+  </head>
+  <style>
+    h1 {
+      font-size: 32;
+      font-family: sans-serif;
+    }
+    h2 {
+      font-size: 24;
+    }
+    .details {
+      width: 80%;
+      margin: auto;
+    }
+    .details table {
+      width: 100%;
+    }
+    .details td {
+      padding: 20px;
+      padding-left: 0px;
+    }
+    .header {
+      display: flex;
+      align-items: center;
+    }
+
+    svg {
+      width: 75;
+      height: 75;
+      margin: 50;
+    }
+    .invoice {
+      width: 80%;
+      margin: auto;
+    }
+    .agreement {
+      width: 80%;
+      margin: auto;
+    }
+    .invoice table {
+      border-collapse: collapse;
+    }
+    /* .invoice tr {
+    } */
+    .invoice table tr th {
+      text-align: left;
+      border: none;
+      font-size: 24px;
+    }
+    .invoice table tr td {
+      border: 3px solid black;
+
+      padding: 15;
+    }
+    .total table td {
+      background-color: gainsboro;
+    }
+    li {
+      font-family: sans-serif;
+    }
+    .agreement li {
+      padding-bottom: 10;
+    }
+    .agreement p {
+      font-family: sans-serif;
+    }
+    .agreement table {
+      border-collapse: collapse;
+      margin-top: 100px;
+    }
+    .agreement table tr td {
+      width: 100%;
+      border-top: 1px solid black;
+      min-width: 150px;
+    }
+  </style>
+  <body>
+    <div class="header">
+      <svg
+        version="1.0"
+        xmlns="http://www.w3.org/2000/svg"
+        width="480.000000pt"
+        height="480.000000pt"
+        viewBox="0 0 480.000000 480.000000"
+        preserveAspectRatio="xMidYMid meet"
+      >
+        <g
+          transform="translate(0.000000,480.000000) scale(0.100000,-0.100000)"
+          fill="#000000"
+          stroke="none"
+        >
+          <path
+            d="M101 4736 c-52 -29 -50 17 -51 -1118 l0 -1058 29 -32 29 -33 1039 -3
+c571 -1 1053 0 1072 3 18 4 44 17 57 30 l24 24 0 1066 c0 712 -3 1073 -10
+1086 -28 51 10 49 -1117 49 -851 -1 -1052 -3 -1072 -14z m1482 -478 c-5 -7
+-31 -39 -57 -72 -37 -47 -44 -61 -35 -72 7 -8 73 -61 148 -118 206 -156 251
+-212 251 -311 0 -194 -109 -420 -264 -546 -261 -213 -631 -223 -893 -25 -158
+119 -265 341 -267 552 -1 91 -1 92 39 149 26 38 83 94 165 160 69 57 135 114
+147 127 l23 24 -55 66 c-30 36 -55 69 -55 72 0 3 194 6 431 6 344 0 430 -3
+422 -12z"
+          />
+          <path
+            d="M2534 4740 c-57 -23 -54 40 -54 -1118 0 -743 3 -1069 11 -1084 26
+-49 6 -48 1112 -48 712 0 1044 3 1065 11 66 23 62 -51 62 1119 0 709 -3 1068
+-10 1081 -28 51 10 49 -1117 48 -576 0 -1058 -4 -1069 -9z m1775 -336 c46 -52
+51 -82 25 -137 -15 -32 -15 -39 0 -99 38 -151 11 -262 -74 -306 -68 -35 -147
+-27 -342 37 -186 60 -251 67 -270 26 -18 -39 3 -89 83 -195 89 -119 129 -200
+129 -260 0 -81 -65 -150 -140 -150 -39 0 -152 39 -277 94 -45 20 -104 39 -131
+43 -45 5 -53 3 -76 -20 -22 -22 -26 -35 -26 -87 0 -33 9 -102 21 -153 42 -187
+3 -237 -185 -237 -87 0 -97 -2 -125 -26 -20 -17 -38 -47 -51 -87 -20 -60 -20
+-60 -15 -17 3 25 14 60 23 79 29 59 56 71 175 80 93 7 110 11 132 31 32 30 32
+49 -5 195 -35 138 -37 177 -12 225 49 98 140 103 343 22 187 -75 235 -79 259
+-22 18 43 -5 90 -103 210 -89 109 -137 197 -137 249 0 60 38 122 90 149 82 41
+126 33 435 -82 95 -35 163 -35 196 0 22 23 24 35 27 135 l4 110 -41 44 c-23
+25 -41 53 -41 64 0 15 10 50 35 119 8 23 33 12 74 -34z"
+          />
+          <path
+            d="M110 2339 c-14 -5 -33 -20 -42 -32 -16 -21 -18 -93 -18 -1087 0
+-1164 -4 -1094 57 -1119 21 -8 304 -11 1086 -9 l1059 3 24 28 24 28 0 1065 c0
+744 -3 1071 -11 1086 -26 49 -5 48 -1116 47 -653 0 -1047 -4 -1063 -10z m1090
+-382 l5 -88 52 40 c55 41 139 79 150 67 11 -11 -80 -86 -144 -118 l-63 -31 0
+-49 0 -49 53 40 c56 43 115 71 144 71 29 -1 -76 -93 -141 -123 -56 -27 -56
+-27 -56 -72 0 -25 2 -45 5 -45 3 0 24 15 48 33 49 37 146 82 155 72 12 -12
+-89 -95 -149 -123 l-59 -27 0 -47 c0 -27 3 -48 6 -48 4 0 22 14 42 31 41 36
+136 83 155 76 21 -8 -73 -88 -140 -119 l-63 -30 0 -50 0 -51 33 27 c40 33 153
+89 169 84 20 -7 -75 -88 -139 -119 l-63 -30 0 -49 0 -50 53 40 c50 39 147 83
+157 73 11 -11 -101 -101 -154 -124 l-56 -24 0 -47 c0 -27 2 -48 5 -48 3 0 24
+15 48 33 49 37 146 82 155 72 12 -12 -88 -94 -149 -122 l-59 -27 0 -48 c0 -26
+3 -48 6 -48 4 0 22 14 42 31 41 36 136 83 155 76 20 -7 -71 -85 -140 -119
+l-63 -31 0 -49 0 -50 39 31 c47 37 132 81 157 81 30 -1 -76 -94 -141 -124
+l-55 -26 -2 -168 c-3 -159 -4 -167 -23 -167 -19 0 -20 8 -23 170 l-3 170 -56
+24 c-65 29 -170 120 -138 120 29 1 93 -31 148 -72 l47 -37 0 49 0 48 -62 31
+c-63 31 -166 122 -138 122 25 0 120 -48 161 -81 l39 -31 0 50 0 50 -63 30
+c-60 28 -156 106 -145 117 12 12 119 -38 162 -76 l46 -41 0 54 0 53 -58 27
+c-56 26 -152 101 -152 118 0 22 121 -34 175 -81 l35 -31 0 55 c0 52 -2 55 -27
+62 -60 14 -212 135 -171 135 28 0 101 -36 151 -74 l47 -36 0 49 0 48 -62 31
+c-57 28 -154 109 -144 120 10 9 82 -23 142 -64 l64 -44 0 49 c0 48 -1 49 -42
+66 -52 20 -143 87 -159 116 -10 19 -9 20 13 14 48 -14 106 -46 146 -81 l42
+-36 0 54 0 53 -54 23 c-52 23 -166 114 -156 125 10 11 121 -41 165 -78 l45
+-36 0 54 c0 51 -2 55 -27 62 -15 3 -45 17 -67 30 -50 29 -126 105 -106 105 25
+0 120 -48 161 -81 l39 -31 0 84 c0 88 4 101 30 96 12 -3 16 -22 20 -91z"
+          />
+          <path
+            d="M2533 2335 c-17 -7 -36 -22 -42 -34 -8 -14 -11 -342 -11 -1085 l0
+-1065 24 -28 24 -28 1059 -3 c782 -2 1065 1 1086 9 61 25 57 -44 57 1117 0
+1173 4 1098 -62 1121 -21 8 -353 11 -1067 11 -858 -1 -1041 -3 -1068 -15z
+m843 -381 c60 -31 232 -127 383 -213 l275 -156 65 -100 c36 -55 71 -122 78
+-148 7 -29 28 -65 51 -92 56 -64 95 -122 88 -134 -3 -5 -20 -12 -37 -16 -37
+-8 -46 -28 -26 -58 9 -15 12 -29 7 -37 -5 -9 -4 -20 2 -27 8 -10 8 -21 -1 -39
+-6 -14 -11 -36 -11 -50 0 -16 -13 -39 -35 -61 l-36 -36 -115 7 -115 7 -37 -38
+c-21 -21 -95 -104 -165 -186 -70 -81 -131 -147 -135 -146 -9 0 -346 438 -349
+453 -1 6 35 41 80 79 126 103 147 125 147 153 0 50 -33 65 -322 154 -230 70
+-278 88 -278 103 0 48 144 347 234 487 52 79 113 150 131 150 6 0 61 -25 121
+-56z"
+          />
+        </g>
+      </svg>
+
+      <h1>Catawba Cultural Center Program Request Form for {{GroupName}}</h1>
+    </div>
+    <section class="details">
+      <table>
+        <tr>
+          <td>
+            <h2>Group Contact:</h2>
+            <p>{{ContactName}}</p>
+          </td>
+          <td>
+            <h2>Contact Email:</h2>
+            <p>{{ContactEmail}}</p>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <h2>Contact Phone:</h2>
+            <p>{{ContactPhone}}</p>
+          </td>
+          <td>
+            <h2>Program Date:</h2>
+            <p>{{ProgramDate}}</p>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <h2>Program Length:</h2>
+            <p>{{ProgramLength}}</p>
+          </td>
+          <td>
+            <h2>Group Size:</h2>
+            <p>{{GroupSize}}</p>
+          </td>
+        </tr>
+
+        <tr>
+          <td>
+            <h2>Program Location:</h2>
+            <p>{{ProgramLocation}}</p>
+          </td>
+          <td>
+            <h2>Program Fee:</h2>
+            <p>{{ProgramFee}}</p>
+          </td>
+        </tr>
+      </table>
+      <h2>Program Details:</h2>
+      <p>{{ProgramDetails}}</p>
+    </section>
+
+    <br />
+    <section class="invoice">
+      <table>
+        <tr>
+          <th>
+            <h1>{{GroupName}} Program Invoice</h1>
+          </th>
+        </tr>
+        <tr>
+          <th>Item</th>
+          <th>Cost</th>
+        </tr>
+        <tr>
+          <td>Cultural Program</td>
+          <td>{{ProgramFee}}</td>
+        </tr>
+        <tr>
+          <td>Gas Mileage ($0.56/mile) if program is off-site</td>
+          <td>$0.00</td>
+        </tr>
+        <tr class="total">
+          <td></td>
+          <td>{{ProgramFee}}</td>
+        </tr>
+      </table>
+      <p style="font-family: monospace; font-weight: bold; font-size: 16px">
+        Payment is due within 30 days of the signing of the agreement.
+      </p>
+      <p style="font-family: monospace; font-weight: bold; font-size: 16px">
+        Payment Methods:
+      </p>
+      <ul>
+        <li>
+          Paypal: To use paypal please send payment to the account associated
+          with
+          <u>caitlin.rogers@catawba.com</u>
+        </li>
+        <li>
+          Please make all checks out to <u>“Catawba Indian Nation”</u> and write
+          <u>“Cultural Program”</u> into the memo line.
+        </li>
+      </ul>
+      <br />
+      <p style="text-align: center; font-weight: bold; line-height: 0">
+        Cultural Center - Catawba Nation
+      </p>
+      <p style="text-align: center">1536 Tom Steven Road</p>
+    </section>
+    <section class="agreement">
+      <h1>Program Agreements</h1>
+      <h2>Assurances</h2>
+      <p>
+        Catawba Nation’s Cultural Division (“Cultural Center”) agrees to provide
+        an educational program (“Program”) for {{groupName}} (“Partner Org.”)
+        conforming to the details listed in the Program Details section. Prior
+        to signing this agreement, both parties shall have confirmed the
+        information listed in the Program Details.
+      </p>
+      <p>
+        The Partner Org. agrees to pay the Cultural Center in accordance with
+        the included Invoice. The Cultural Center retains the right to charge
+        the Partner Org. for damages to facilities or collections and other
+        costs incurred in the course of their program.
+      </p>
+      <p>
+        The Partner Org is responsible for any and all transportation to and
+        from the Cultural Center or other Program site.
+      </p>
+      <p>
+        The Partner Org. is responsible for all translation accommodations.
+        Cultural Center staff will be available for interpreters to explain
+        context-specific language prior to the Program.
+      </p>
+      <p>
+        The Partner Org. agrees to all of the following behavioral expectations.
+        If a group includes people under the age of 18, the Partner Org. is
+        required to secure parental/guardian consent and provide adequate
+        chaperones to enforce these expectations.
+      </p>
+      <br />
+      <h2>Behavioral Expectations</h2>
+      <ul>
+        <li>
+          <b>Respect People:</b>
+          All visitors to the Cultural Center are expected to treat staff,
+          community members, and other visitors with respect. This includes
+          listening respectfully to elders and other presenters. Anyone
+          threatening another person, including using harassing language, will
+          be asked to leave followed by appropriate action as determined by
+          Catawba Nation.
+        </li>
+        <li>
+          <b>Respect Place:</b>
+          The Cultural Center and the objects protected inside represent an
+          important history for Catawba Nation. We ask that visitors respect
+          this by not touching exhibits unless directed to do so, staying within
+          public areas, and treating our facilities with care.
+        </li>
+        <li>
+          <b>Respect Land:</b> Please refrain from littering at the Cultural
+          Center or on surrounding lands. Please do not harvest, destroy,
+          remove, or otherwise move any plant, animal, mineral, or other item
+          without explicit permission from the Cultural Center. We invite every
+          visitor to help us respect the land by removing litter where safe and
+          possible.
+        </li>
+      </ul>
+      <br />
+      <h2>Cancellation Policy</h2>
+      <p>
+        The Cultural Center requests that cancellation or rescheduling notice be
+        given at least 48 hours before the scheduled program. Without adequate
+        notice, groups may still be liable for a full or partial payment of
+        program fees.
+      </p>
+      <br />
+      <table>
+        <tr>
+          <td>Partner Org. Representative's Signature</td>
+          <td class="date">Date</td>
+        </tr>
+      </table>
+    </section>
+  </body>
+</html>
