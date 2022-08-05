@@ -5,8 +5,10 @@ import useWindowSize from '../hooks/useWindowSize'
 import { ReactComponent as Menu } from '../assets/menu.svg'
 import useAPI from '../hooks/useAPI'
 import { useLocation, useNavigate } from 'react-router-dom'
+import useBreakpoints from '../hooks/useBreakpoints'
 const Icon = require('../assets/icon.png')
 const Link = ({ data, i, showMenu }) => {
+  const { breakpoint } = useBreakpoints()
   const link = data
   const rate = i * 0.05 + 0.2
   const [active, setActive] = useState(false)
@@ -17,21 +19,45 @@ const Link = ({ data, i, showMenu }) => {
       onMouseLeave={toggle}
       href={link.fields.linkUrl}
       style={{
-        paddingTop: 10,
-        paddingBottom: 10,
-        paddingLeft: 20,
-        paddingRight: 20,
+        ...{
+          xl: {
+            paddingTop: 10,
+            paddingBottom: 10,
+            paddingLeft: 20,
+            paddingRight: 20,
+          },
+          lg: {
+            paddingTop: 10,
+            paddingBottom: 10,
+            paddingLeft: 20,
+            paddingRight: 20,
+          },
+          md: {
+            padding: 10,
+          },
+          sm: {
+            padding: 9,
+          },
+          xs: {
+            padding: 5,
+            marginBottom: 5,
+          },
+        }[breakpoint],
+
         backgroundColor: active ? THEME.yellow : THEME.white,
         borderRadius: 50,
         textDecoration: 'none',
         color: THEME.navy,
         ...THEME.Lato,
         boxShadow: '1px 1px 2px rgba(0,0,0,0.5)',
-        fontSize: 20,
+        fontSize: { xl: 20, lg: 20, md: 16, sm: 14, xs: 12 }[breakpoint],
         position: 'relative',
         top: showMenu ? 0 : -100,
         opacity: showMenu ? 1 : 0,
         transition: `top ${rate}s ease-in, opacity 0.3s ease-in, background-color 0.1s ease-in`,
+
+        display: 'grid',
+        placeItems: 'center',
       }}
     >
       {link.fields.linkTitle}
@@ -53,6 +79,7 @@ const Header = () => {
   const navigate = useNavigate()
   const [hidden, setHidden] = useState(isHome ? true : false)
   const [showMenu, setShowMenu] = useState()
+  const { breakpoint, isXs } = useBreakpoints()
   useEffect(() => {
     const handleScroll = () => {
       if (isHome) {
@@ -76,6 +103,7 @@ const Header = () => {
     <header
       style={{
         backgroundColor: hidden ? 'transparent' : THEME.navy,
+
         minHeight: 50,
         display: 'flex',
         alignItems: 'center',
@@ -94,13 +122,17 @@ const Header = () => {
           flexDirection: 'row',
           alignItems: 'center',
           cursor: 'pointer',
+
+          transition: 'all 0.2s ease',
+          position: 'relative',
+          left: showMenu ? -200 : 0,
+          transition: 'all 0.2s ease',
         }}
         onMouseDown={() => navigate('/')}
       >
         <img
           style={{
             height: 30,
-            display: hidden && 'none',
             marginLeft: 20,
             marginRight: 20,
           }}
@@ -110,10 +142,11 @@ const Header = () => {
 
         <h1
           style={{
-            display: hidden && 'none',
+            opacity: hidden ? 0 : 1,
             color: THEME.white,
             ...THEME.DMSerif,
             fontSize: 20,
+            transition: 'all 0.2s ease',
           }}
         >
           Catawba Cultural Center
@@ -140,7 +173,14 @@ const Header = () => {
             borderRadius: 50,
             backgroundColor: THEME.white,
             marginRight: 15,
-            transform: `rotate(${showMenu ? 0 : 90}deg)`,
+            transform: `rotate(${showMenu ? 0 : 90}deg) scale(${
+              {
+                xl: 1,
+                lg: 0.9,
+                md: 0.8,
+                sm: 0.75,
+              }[breakpoint]
+            })`,
             transition: 'transform 0.2s ease-in',
             cursor: 'pointer',
 
@@ -160,6 +200,7 @@ const Header = () => {
             backgroundColor: showMenu ? THEME.navy : 'transparent',
             transition: 'background-color 0.2s ease-in',
             marginRight: 75,
+            flexWrap: isXs ? 'wrap' : 'nowrap',
           }}
         >
           <Links showMenu={showMenu} />
