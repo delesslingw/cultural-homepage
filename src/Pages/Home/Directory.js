@@ -25,7 +25,6 @@ const Link = ({ link, i }) => {
         boxShadow: active
           ? '2px 2px 4px rgba(0,0,0,0.5)'
           : '1px 1px 2px rgba(0,0,0,0.5)',
-        overflow: 'hidden',
       }}
     >
       <div
@@ -35,6 +34,7 @@ const Link = ({ link, i }) => {
           alignItems: 'center',
           width: '100%',
           height: '100%',
+          position: 'relative',
         }}
       >
         <div
@@ -42,12 +42,18 @@ const Link = ({ link, i }) => {
             backgroundImage: `url(https:${link.fields.linkImage.fields.file.url})`,
             backgroundPosition: 'center',
             backgroundSize: 'cover',
-            width: 150,
-            height: 150,
-            borderRadius: 150,
             display: 'grid',
             placeItems: 'center',
             overflow: 'hidden',
+            position: 'absolute',
+            borderRadius: 150,
+            width: 100,
+            height: 100,
+            top: -50,
+            left: -50,
+            boxShadow: active
+              ? '2px 2px 4px rgba(0,0,0,0.5)'
+              : '1px 1px 2px rgba(0,0,0,0.5)',
           }}
         >
           <div
@@ -83,6 +89,7 @@ const Link = ({ link, i }) => {
             marginRight: 30,
             marginTop: 0,
             marginBottom: 0,
+            padding: 25,
           }}
         >
           <h3

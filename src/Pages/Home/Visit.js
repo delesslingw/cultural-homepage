@@ -4,11 +4,12 @@ import RichText from '../../Components/RichText'
 import useAPI from '../../hooks/useAPI'
 import useWindowSize from '../../hooks/useWindowSize'
 import Svg from '../../Components/Svg'
+import useBreakpoints from '../../hooks/useBreakpoints'
 
 const Visit = () => {
   const { content } = useAPI()
   const { width } = useWindowSize()
-
+  const { breakpoint } = useBreakpoints()
   const { visitDescription, visitHours, visitAddress } = content[0].fields
   return (
     <>
@@ -83,9 +84,17 @@ const Visit = () => {
               title='Map to Catawba Cultural Center'
               src='https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3319.0594197892415!2d-80.88701754928113!3d34.90162877984202!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x885680c46ea15685%3A0x36d4ef2c29c58f17!2sCatawba%20Cultural%20Center!5e1!3m2!1sen!2sus!4v1659030414523!5m2!1sen!2sus'
               style={{
-                width: width < 600 ? width : 600,
                 height: 450,
                 border: 0,
+                width: '100vw',
+                ...breakpoint({
+                  xl: {
+                    width: 600,
+                  },
+                  lg: {
+                    width: 600,
+                  },
+                }),
               }}
               allowFullScreen=''
               loading='lazy'

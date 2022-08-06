@@ -25,7 +25,7 @@ const Link = ({ data, i, showMenu }) => {
         color: THEME.navy,
         ...THEME.Lato,
         boxShadow: '1px 1px 2px rgba(0,0,0,0.5)',
-        fontSize: { xl: 20, lg: 20, md: 16, sm: 12, xs: 12 }[breakpoint],
+        fontSize: breakpoint({ xl: 20, lg: 20, md: 16, sm: 12, xs: 12 }),
         position: 'relative',
         top: showMenu ? 0 : -100,
         opacity: showMenu ? 1 : 0,
@@ -33,7 +33,7 @@ const Link = ({ data, i, showMenu }) => {
 
         display: 'grid',
         placeItems: 'center',
-        ...{
+        ...breakpoint({
           xl: {
             paddingTop: 10,
             paddingBottom: 10,
@@ -47,7 +47,7 @@ const Link = ({ data, i, showMenu }) => {
             paddingRight: 20,
           },
           md: {
-            padding: 10,
+            padding: 9,
           },
           sm: {
             padding: 9,
@@ -56,7 +56,7 @@ const Link = ({ data, i, showMenu }) => {
             padding: 10,
             margin: 5,
           },
-        }[breakpoint],
+        }),
       }}
     >
       {link.fields.linkTitle}
@@ -135,14 +135,12 @@ const Header = () => {
             borderRadius: 50,
             backgroundColor: THEME.white,
             marginRight: 15,
-            transform: `rotate(${showMenu ? 0 : 90}deg) scale(${
-              {
-                xl: 1,
-                lg: 0.9,
-                md: 0.8,
-                sm: 0.75,
-              }[breakpoint]
-            })`,
+            transform: `rotate(${showMenu ? 0 : 90}deg) scale(${breakpoint({
+              xl: 1,
+              lg: 0.9,
+              md: 0.8,
+              sm: 0.75,
+            })})`,
             transition: 'transform 0.2s ease-in',
             cursor: 'pointer',
 

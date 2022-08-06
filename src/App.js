@@ -8,7 +8,7 @@ import Programs from './Pages/Programs'
 import THPO from './Pages/THPO'
 import useBreakpoints from './hooks/useBreakpoints'
 function App() {
-  const { breakpoint } = useBreakpoints()
+  const { breakpoint, active } = useBreakpoints()
   return (
     <div className='App' style={{ position: 'relative' }}>
       <div
@@ -21,7 +21,7 @@ function App() {
           zIndex: 100,
         }}
       >
-        {breakpoint}
+        {active}
       </div>
       <Header></Header>
       <Routes>

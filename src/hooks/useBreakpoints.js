@@ -22,17 +22,28 @@ export const BreakpointProvider = ({ children }) => {
     isMd: useMediaQuery('(min-width: 769px) and (max-width: 1024px)'),
     isLg: useMediaQuery('(min-width: 1025px) and (max-width: 1400px)'),
     isXl: useMediaQuery('(min-width: 1401px)'),
-    breakpoint: 'xl',
+    active: 'xl',
   }
   return <Context.Provider value={breakpoints}>{children}</Context.Provider>
 }
 export default function useBreakpoints() {
   const breakpoints = useContext(Context)
 
-  if (breakpoints.isXs) breakpoints.breakpoint = 'xs'
-  if (breakpoints.isSm) breakpoints.breakpoint = 'sm'
-  if (breakpoints.isMd) breakpoints.breakpoint = 'md'
-  if (breakpoints.isLg) breakpoints.breakpoint = 'lg'
-  if (breakpoints.isXl) breakpoints.breakpoint = 'xl'
+  if (breakpoints.isXs) breakpoints.active = 'xs'
+  if (breakpoints.isSm) breakpoints.active = 'sm'
+  if (breakpoints.isMd) breakpoints.active = 'md'
+  if (breakpoints.isLg) breakpoints.active = 'lg'
+  if (breakpoints.isXl) breakpoints.active = 'xl'
+
+  breakpoints.breakpoint = (bps = {}) => {
+    return {
+      xl: {},
+      lg: {},
+      md: {},
+      sm: {},
+      xs: {},
+      ...bps,
+    }[breakpoints.active]
+  }
   return breakpoints
 }

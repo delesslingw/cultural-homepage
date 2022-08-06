@@ -4,11 +4,12 @@ import useAPI from '../../hooks/useAPI'
 import RichText from '../../Components/RichText'
 
 import { useEffect, useState } from 'react'
-import useWindowSize from '../../hooks/useWindowSize'
+
 import Svg from '../../Components/Svg'
 import Icon from '../../assets/icon.png'
 import useBreakpoints from '../../hooks/useBreakpoints'
 const Link = ({ data, i }) => {
+  const { breakpoint } = useBreakpoints()
   const link = data
   const rate = i * 0.05 + 0.5
   const [show, setShow] = useState(false)
@@ -52,9 +53,41 @@ const Link = ({ data, i }) => {
           width: 40,
 
           borderRadius: 40,
+          ...breakpoint({
+            lg: {
+              height: 30,
+              width: 30,
+            },
+            md: {
+              height: 30,
+              width: 30,
+            },
+            sm: {
+              height: 30,
+              width: 30,
+            },
+            xs: {
+              height: 25,
+              width: 25,
+            },
+          }),
         }}
       ></div>
-      <span style={{ marginLeft: 5, marginRight: 15, fontSize: 20 }}>
+      <span
+        style={{
+          marginLeft: 5,
+          marginRight: 15,
+          ...breakpoint({
+            xl: {
+              fontSize: 20,
+            },
+            lg: { fontSize: 18 },
+            md: { fontSize: 16 },
+            sm: { fontSize: 14 },
+            xs: { fontSize: 12 },
+          }),
+        }}
+      >
         {link.fields.linkTitle}
       </span>
     </a>
@@ -121,10 +154,11 @@ const Greeting = () => {
             <div
               style={{
                 backgroundColor: THEME.navy,
-
-                display: 'flex',
-                alignItems: 'flex-start',
                 position: 'relative',
+
+                display: 'grid',
+                gridTemplateColumns: 'auto 1fr',
+                gridTemplateRows: 'auto 1fr',
               }}
             >
               <div
@@ -133,58 +167,91 @@ const Greeting = () => {
                   marginRight: 30,
 
                   display: 'grid',
+                  gridColumn: '1 / 2',
+                  gridRow: '1/2',
                   placeItems: 'center',
                   position: 'relative',
                   left: loaded ? 0 : '-50vw',
                   transition: 'all 0.2s ease-in',
+                  ...breakpoint({
+                    xl: {
+                      gridRow: '1 / 3',
+                    },
+                  }),
                 }}
               >
                 <img
                   style={{
                     width: 75,
                     height: 75,
-                    ...{
-                      xl: {},
-                      lg: {},
-                      md: {},
-                      sm: {},
-                      xs: {},
-                    }[breakpoint],
+                    ...breakpoint({
+                      xl: {
+                        width: 100,
+                        height: 100,
+                      },
+                      lg: {
+                        width: 90,
+                        height: 90,
+                      },
+                      md: {
+                        width: 80,
+                        height: 80,
+                      },
+                      sm: {
+                        width: 70,
+                        height: 70,
+                      },
+                      xs: {
+                        width: 60,
+                        height: 60,
+                      },
+                    }),
                   }}
                   alt=''
                   src={Icon}
                 />
               </div>
-              <div style={{ display: 'flex', flexDirection: 'column' }}>
-                <h1
-                  style={{
-                    ...THEME.DMSerif,
-                    fontSize: '7vw',
-                    color: THEME.white,
+              <h1
+                style={{
+                  ...THEME.DMSerif,
+                  fontSize: '7vw',
+                  color: THEME.white,
 
-                    padding: 10,
-                    display: 'flex',
-                    justifyContent: 'space-around',
-                    flexWrap: 'wrap',
-                    position: 'relative',
-                    right: loaded ? 0 : -1500,
-                    transition: 'right 0.5s ease-in',
-                  }}
-                >
-                  Catawba Cultural Center
-                </h1>
-                <div
-                  style={{
-                    display: 'flex',
-                    flexDirection: 'row',
-                    justifyContent: 'space-around',
+                  padding: 10,
+                  display: 'flex',
 
-                    marginBottom: 20,
-                    flexWrap: 'wrap',
-                  }}
-                >
-                  <Links />
-                </div>
+                  flexWrap: 'nowrap',
+                  position: 'relative',
+                  right: loaded ? 0 : -1500,
+                  transition: 'right 0.5s ease-in',
+                  gridColumn: '2 / 3',
+                  gridRow: '1 / 2',
+                }}
+              >
+                Catawba Cultural Center
+              </h1>
+              <div
+                style={{
+                  display: 'flex',
+                  flexDirection: 'row',
+                  justifyContent: 'flex-start',
+
+                  marginBottom: 20,
+                  marginLeft: 20,
+                  marginRight: 20,
+                  flexWrap: 'wrap',
+                  gridColumn: '1 / 3',
+                  gridRow: '2 / 3',
+                  ...breakpoint({
+                    xl: {
+                      gridColumn: '2 / 3',
+                      padding: 0,
+                    },
+                    md: {},
+                  }),
+                }}
+              >
+                <Links />
               </div>
             </div>
           </div>
@@ -196,11 +263,28 @@ const Greeting = () => {
           width: '100%',
           minHeight: 300,
           textAlign: 'center',
-          fontSize: 25,
+
           ...THEME.NotoSans,
           lineHeight: 1.5,
           display: 'grid',
           placeItems: 'center',
+          ...breakpoint({
+            xl: {
+              fontSize: 24,
+            },
+            lg: {
+              fontSize: 24,
+            },
+            md: {
+              fontSize: 20,
+            },
+            sm: {
+              fontSize: 16,
+            },
+            xs: {
+              fontSize: 16,
+            },
+          }),
         }}
       >
         <Svg
