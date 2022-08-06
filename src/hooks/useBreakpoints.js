@@ -47,3 +47,38 @@ export default function useBreakpoints() {
   }
   return breakpoints
 }
+
+export const BreakpointTool = () => {
+  const { breakpoint, active } = useBreakpoints()
+  return (
+    <div
+      style={{
+        position: 'sticky',
+        top: 0,
+        padding: 5,
+        backgroundColor: 'yellowgreen',
+        height: '3vh',
+        zIndex: 100,
+        ...breakpoint({
+          xl: {
+            backgroundColor: 'yellowgreen',
+          },
+          lg: {
+            backgroundColor: 'green',
+          },
+          md: {
+            backgroundColor: 'yellow',
+          },
+          sm: {
+            backgroundColor: 'orange',
+          },
+          xs: {
+            backgroundColor: 'red',
+          },
+        }),
+      }}
+    >
+      {active}
+    </div>
+  )
+}
