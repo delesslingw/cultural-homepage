@@ -94,7 +94,7 @@ const Link = ({ link, i }) => {
         >
           <h3
             style={{
-              textAlign: i % 2 !== 0 ? 'left' : 'right',
+              textAlign: 'left',
               ...THEME.Lato,
               fontStyle: 'italic',
               fontWeight: 'bolder',

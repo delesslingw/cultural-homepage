@@ -113,13 +113,11 @@ const Header = () => {
         transition: 'top .5s ease',
         paddingTop: 15,
         paddingBottom: 15,
+        opacity: hidden ? 0 : 1,
       }}
     >
       <div
         style={{
-          position: 'absolute',
-
-          height: '100%',
           width: '100%',
           right: 0,
           display: 'flex',
