@@ -7,8 +7,10 @@ import Hero from './Hero'
 import Resources from './Resources'
 const Library = () => {
   const { content } = useAPI()
-  const { libraryTitle, libraryDescription, libraryImages } = content[0].fields
+  const { libraryTitle, libraryDescription, libraryImages, libraryFAQ } =
+    content[0].fields
   // console.log(content[0].fields)
+
   return (
     <section>
       <Hero
@@ -18,7 +20,7 @@ const Library = () => {
       />
       <Feature />
       <Resources />
-      <FAQ />
+      <FAQ data={libraryFAQ} />
       <svg
         style={{
           backgroundColor: THEME.orange,

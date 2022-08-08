@@ -1,74 +1,44 @@
 import React from 'react'
+// import useBreakpoints from '../../hooks/useBreakpoints'
 import THEME from '../../THEME'
+import Hero from '../Library/Hero'
+import useAPI from '../../hooks/useAPI'
 
+import Schedule from './Schedule'
+import Recordings from './Recordings'
+import FAQ from '../Library/FAQ'
 const Classes = () => {
-  const title = 'Cultural Classes',
-    description =
-      'The Cultural Center provides classes to our community on everything from traditional skills - such as pottery, basketry, and foraging - but also other topics relevant to the Catawba community, such as recycling, gardening, history, archeaology, and more.'
-
+  // const { breakpoint } = useBreakpoints()
+  const { content } = useAPI()
+  const { classesTitle, classesDescription, classesFAQ, classesImage } =
+    content[0].fields
+  // console.log(content[0])
   return (
     <section>
-      <div
+      <Hero
+        title={classesTitle}
+        description={classesDescription}
+        image={`https:${classesImage.fields.file.url}`}
+        backgroundColor={THEME.yellow}
+      />
+      <Schedule />
+      <Recordings />
+      <FAQ data={classesFAQ} />
+      <svg
         style={{
-          height: '100vh',
-
-          display: 'flex',
-          flexDirection: 'column',
-          justifyContent: 'flex-end',
-          // backgroundImage: `url(${image})`,
-          backgroundSize: 'cover',
-          backgroundPosition: 'center',
-          backgroundColor: THEME.yellow,
+          backgroundColor: THEME.orange,
+          position: 'relative',
+          top: -200,
         }}
+        xmlns='http://www.w3.org/2000/svg'
+        viewBox='0 0 1440 320'
       >
-        <svg
-          xmlns='http://www.w3.org/2000/svg'
-          viewBox='0 0 1440 320'
-          style={{ position: 'absolute' }}
-        >
-          <path
-            fill={THEME.blue}
-            fillOpacity='1'
-            d='M0,288L48,288C96,288,192,288,288,282.7C384,277,480,267,576,224C672,181,768,107,864,74.7C960,43,1056,53,1152,48C1248,43,1344,21,1392,10.7L1440,0L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z'
-          ></path>
-        </svg>
-        <div
-          style={{
-            height: '100%',
-            display: 'flex',
-            flexDirection: 'column',
-            justifyContent: 'flex-end',
-            alignItems: 'flex-end',
-            paddingBottom: 50,
-            paddingRight: 50,
-            zIndex: 5,
-          }}
-        >
-          <h2 style={{ ...THEME.DMSerif, fontSize: 40, paddingBottom: 25 }}>
-            {title}
-          </h2>
-          <p
-            style={{
-              width: '40%',
-              ...THEME.Lato,
-              fontSize: 16,
-              textAlign: 'right',
-            }}
-          >
-            {description}
-          </p>
-          {/* <p
-          style={{
-            width: '40%',
-            ...THEME.Lato,
-            fontSize: 16,
-            textAlign: 'right',
-          }}
-        >
-          <RichText>{description.content}</RichText>
-        </p> */}
-        </div>
-      </div>
+        <path
+          fill={THEME.navy}
+          fillOpacity='1'
+          d='M0,32L48,69.3C96,107,192,181,288,181.3C384,181,480,107,576,106.7C672,107,768,181,864,202.7C960,224,1056,192,1152,154.7C1248,117,1344,75,1392,53.3L1440,32L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z'
+        ></path>
+      </svg>
     </section>
   )
 }

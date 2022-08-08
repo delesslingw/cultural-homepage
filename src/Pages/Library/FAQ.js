@@ -1,11 +1,10 @@
 import React from 'react'
 import RichText from '../../Components/RichText'
-import useAPI from '../../hooks/useAPI'
-import THEME from '../../THEME'
 
-const FAQ = () => {
-  const { content } = useAPI()
-  const { libraryFAQ } = content[0].fields
+import THEME from '../../THEME'
+// TODO: refactor & restyle FAQ
+const FAQ = ({ data }) => {
+  const libraryFAQ = data
   return (
     <>
       <svg

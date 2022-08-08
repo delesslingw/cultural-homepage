@@ -59,7 +59,7 @@ const Link = ({ data, i, showMenu }) => {
         }),
       }}
     >
-      {link.fields.linkTitle}
+      {link.fields.linkShortTitle}
     </a>
   )
 }

@@ -1,61 +1,50 @@
 import React, { useState } from 'react'
 import THEME from '../../THEME'
 import Input from './Input'
-const prompts = {
-  'Name of Group Requesting a Program': '',
-  'Name of Group Contact Person': '',
-  "Contact Person's Email": '',
-  'Contact Phone': '',
-  "What date(s) are you considering for a program? We'll do our best to accomodate your schedule but can't guarantee we'll be available on any given day.":
-    '',
-  'How long would you like the program to last? Most of our programs last about an hour.':
-    '',
-  'How many students or participants do you expect to be a part of your program? Please include chaperones, educators, parents, and anyone else attending.':
-    '',
-  'We provide our programs on a compensation sliding-scale to ensure that all kinds of organizations can access this educational resource. Typically we receive $250 per 1 hour program. What is your budget for this Cultural Center program? This is only an initial estimate. We will finalize payment and other details prior to signing any agreement.':
-    '',
-  "Finally, tell us what you would like to see from this program! If you aren't sure then tell us a little bit about your group, why y'all are interested in a Cultural program, and what your group's interests are.":
-    '',
-}
-const Submit = ({ handleClick }) => {
+const Step = ({
+  num,
+  children,
+  showLine = true,
+  backgroundColor = THEME.white,
+}) => {
   return (
     <div
       style={{
-        backgroundColor: THEME.blue,
-        width: '100%',
-        display: 'grid',
-        placeItems: 'center',
-        height: 50,
-        borderRadius: 25,
-        marginTop: 25,
-        fontSize: 24,
-        ...THEME.DMSerif,
-        cursor: 'pointer',
-        boxShadow: '1px 1px 2px rgba(0,0,0,0.8)',
+        borderLeft: showLine ? '1px dotted black' : 'none',
+        height: 100,
+        paddingLeft: 35,
+        position: 'relative',
       }}
-      onMouseDown={handleClick}
     >
-      SUBMIT
+      <div
+        style={{
+          width: 50,
+          height: 50,
+          borderRadius: 50,
+          border: '1px solid rgba(0,0,0,0.7)',
+          boxShadow: '1px 1px 2px rgba(0,0,0,0.7)',
+          position: 'absolute',
+          left: -26,
+          top: -16,
+          backgroundColor,
+          display: 'grid',
+          placeItems: 'center',
+          fontSize: 22,
+
+          ...THEME.Lato,
+        }}
+      >
+        {num}
+      </div>
+      {children}
     </div>
   )
 }
 const Request = () => {
-  const [value, setValue] = useState(prompts)
-  const update = (property, value) => {
-    setValue((obj) => {
-      return {
-        ...obj,
-        [property]: value,
-      }
-    })
-  }
-  const handleSubmit = () => {
-    console.log('Submit', value)
-  }
   return (
     <>
       <svg
-        style={{ backgroundColor: THEME.teal }}
+        style={{ backgroundColor: THEME.teal, paddingTop: 50 }}
         xmlns='http://www.w3.org/2000/svg'
         viewBox='0 0 1440 320'
       >
@@ -73,7 +62,7 @@ const Request = () => {
           top: -5,
         }}
       >
-        <div style={{ position: 'relative', top: -150 }}>
+        <div style={{ position: 'relative', top: 0 }}>
           <h3
             style={{
               fontSize: 32,
@@ -84,31 +73,17 @@ const Request = () => {
           >
             Request a Program
           </h3>
-          {/* <p style={{ width: '50%', paddingLeft: 20, marginBottom: 30 }}>
-            Steps to booking a program: 1. Fill out this form; 2: Use the link
-            emailed to you to schedule a meeting to discuss your program. 3.
-            Once your program details are finalized, sign and return the Program
-            Agreement. This will officially "book" your program.{' '}
-          </p> */}
-          
-          {/* <div
-            style={{
-              width: '50%',
-              margin: 'auto',
-            }}
-          >
-            {Object.keys(value).map((prop) => {
-              return (
-                <Input
-                  key={prop}
-                  prompt={prop}
-                  value={value[prop]}
-                  update={(e) => update(prop, e.target.value)}
-                />
-              )
-            })}
-            <Submit handleClick={handleSubmit} />
-          </div> */}
+          <div style={{ width: '50%', margin: 'auto', position: 'relative' }}>
+            <Step num={1}>Submit Program Request Form</Step>
+            <Step num={2}>
+              Schedule conversation with our staff to finalize details
+            </Step>
+            <Step num={3}>Sign and return your agreement.</Step>
+            <Step num={4}>Send payment on or before your program date.</Step>
+            <Step num={5} showLine={false} backgroundColor={THEME.blue}>
+              Enjoy your program!
+            </Step>
+          </div>
         </div>
       </div>
     </>

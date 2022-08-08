@@ -2,7 +2,7 @@ import RichText from '../../Components/RichText'
 import THEME from '../../THEME'
 import useBreakpoints from '../../hooks/useBreakpoints'
 
-const Hero = ({ title, description, image }) => {
+const Hero = ({ title, description, image, backgroundColor = THEME.blue }) => {
   const { breakpoint } = useBreakpoints()
   return (
     <div
@@ -11,7 +11,7 @@ const Hero = ({ title, description, image }) => {
         display: 'flex',
         flexDirection: 'column',
 
-        backgroundColor: THEME.blue,
+        backgroundColor,
       }}
     >
       <div
@@ -33,7 +33,7 @@ const Hero = ({ title, description, image }) => {
           style={{ position: 'absolute' }}
         >
           <path
-            fill={THEME.blue}
+            fill={backgroundColor}
             fillOpacity='1'
             d='M0,288L48,288C96,288,192,288,288,282.7C384,277,480,267,576,224C672,181,768,107,864,74.7C960,43,1056,53,1152,48C1248,43,1344,21,1392,10.7L1440,0L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z'
           ></path>
@@ -61,7 +61,7 @@ const Hero = ({ title, description, image }) => {
             },
             sm: {
               top: -70,
-              width: '100%',
+              width: 'auto',
             },
           }),
         }}
@@ -89,6 +89,10 @@ const Hero = ({ title, description, image }) => {
                 fontSize: 40,
                 top: 0,
               },
+              xs: {
+                fontSize: 40,
+                top: 0,
+              },
             }),
           }}
         >
@@ -111,6 +115,9 @@ const Hero = ({ title, description, image }) => {
               },
               md: {
                 textAlign: 'left',
+              },
+              sm: {
+                bottom: -20,
               },
             }),
           }}

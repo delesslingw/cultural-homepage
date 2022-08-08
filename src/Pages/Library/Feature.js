@@ -106,6 +106,7 @@ const Feature = () => {
               boxShadow: `1px 1px 2px rgba(0, 0, 0, 0.5)`,
               width: 8.5 * 35,
               height: 11 * 35,
+              margin: 20,
               ...breakpoint({
                 md: {
                   width: 8.5 * 30,
