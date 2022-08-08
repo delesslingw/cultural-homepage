@@ -1,17 +1,17 @@
 import React from 'react'
 import RichText from '../../Components/RichText'
+import useBreakpoints from '../../hooks/useBreakpoints'
 
 import THEME from '../../THEME'
 // TODO: refactor & restyle FAQ
 const FAQ = ({ data }) => {
   const libraryFAQ = data
+  const { breakpoint } = useBreakpoints()
   return (
-    <>
+    <div style={{ backgroundColor: THEME.orange }}>
       <svg
         style={{
           backgroundColor: THEME.teal,
-          position: 'relative',
-          top: -60,
         }}
         xmlns='http://www.w3.org/2000/svg'
         viewBox='0 0 1440 320'
@@ -25,9 +25,7 @@ const FAQ = ({ data }) => {
       <div
         style={{
           backgroundColor: THEME.orange,
-          minHeight: '50vh',
-          position: 'relative',
-          top: -200,
+
           display: 'grid',
           placeItems: 'center',
         }}
@@ -36,13 +34,28 @@ const FAQ = ({ data }) => {
           style={{
             fontSize: 32,
             ...THEME.DMSerif,
-            position: 'relative',
-            top: -50,
+            marginBottom: 32,
           }}
         >
           Frequently Asked Questions
         </h3>
-        <div style={{ width: '50vw', margin: 'auto' }}>
+        <div
+          style={{
+            width: '50vw',
+            margin: 'auto',
+            ...breakpoint({
+              md: {
+                width: '90%',
+              },
+              sm: {
+                width: '90%',
+              },
+              xs: {
+                width: '90%',
+              },
+            }),
+          }}
+        >
           {libraryFAQ.map((data, i) => {
             const { question, answer } = data.fields
             return (
@@ -61,11 +74,19 @@ const FAQ = ({ data }) => {
                     ...THEME.DMSerif,
                     fontSize: 24,
                     fontStyle: 'italic',
-                    marginBottom: 10,
                   }}
                 >
                   {question}
                 </h4>
+                <div
+                  style={{
+                    height: 0,
+                    width: 150,
+                    border: '1px solid rgba(0,0,0,0.7)',
+                    marginBottom: 10,
+                    marginTop: 10,
+                  }}
+                />
                 <div style={{ ...THEME.NotoSans, fontSize: 16 }}>
                   <RichText>{answer.content}</RichText>
                 </div>
@@ -74,7 +95,7 @@ const FAQ = ({ data }) => {
           })}
         </div>
       </div>
-    </>
+    </div>
   )
 }
 export default FAQ

@@ -1,16 +1,17 @@
 import React from 'react'
 import RichText from '../../Components/RichText'
 import useAPI from '../../hooks/useAPI'
+import useBreakpoints from '../../hooks/useBreakpoints'
 import THEME from '../../THEME'
 
 const Resources = () => {
   const { content } = useAPI()
-
+  const { breakpoint } = useBreakpoints()
   const { libraryResources } = content[0].fields
   return (
-    <>
+    <div style={{ backgroundColor: THEME.teal }}>
       <svg
-        style={{ backgroundColor: THEME.yellow, position: 'relative', top: -5 }}
+        style={{ backgroundColor: THEME.yellow }}
         xmlns='http://www.w3.org/2000/svg'
         viewBox='0 0 1440 320'
       >
@@ -24,26 +25,27 @@ const Resources = () => {
         style={{
           minHeight: '50vh',
           backgroundColor: THEME.teal,
-          position: 'relative',
-          top: -57,
         }}
       >
-        {/* <h3
+        <h3
           style={{
             ...THEME.DMSerif,
             fontSize: 48,
-            position: 'relative',
-            left: 100,
-            marginBottom: 150,
+            marginLeft: 65 - 50,
+            marginBottom: 65,
           }}
         >
           Resources
-        </h3> */}
+        </h3>
         <div
           style={{
             display: 'flex',
-            flexWrap: 'wrap',
-            justifyContent: 'space-around',
+
+            flexDirection: 'column',
+            justifyContent: 'flex-start',
+            ...breakpoint({
+              md: {},
+            }),
           }}
         >
           {libraryResources.map((link, i) => {
@@ -52,16 +54,22 @@ const Resources = () => {
                 key={link.fields.resourceLink}
                 href={link.fields.resourceLink}
                 style={{
-                  minWidth: '30vw',
-                  maxWidth: '40vw',
-                  borderRadius: 50,
-                  backgroundColor: THEME.white,
-                  marginBottom: '5vw',
                   textDecoration: 'none',
                   color: THEME.black,
-                  display: 'flex',
+                  backgroundColor: THEME.white,
+                  borderRadius: 50,
                   position: 'relative',
+                  display: 'flex',
                   boxShadow: `1px 1px 2px rgba(0,0,0,0.5)`,
+
+                  marginBottom: 65,
+                  marginLeft: 65,
+                  marginRight: 65,
+                  ...breakpoint({
+                    md: {
+                      maxWidth: 'none',
+                    },
+                  }),
                 }}
               >
                 <div
@@ -84,7 +92,7 @@ const Resources = () => {
                 >
                   <h4
                     style={{
-                      textAlign: 'center',
+                      textAlign: 'left',
                       ...THEME.DMSerif,
                       fontSize: 32,
                       marginBottom: 12,
@@ -103,7 +111,7 @@ const Resources = () => {
           })}
         </div>
       </div>
-    </>
+    </div>
   )
 }
 

@@ -9,7 +9,7 @@ const Library = () => {
   const { content } = useAPI()
   const { libraryTitle, libraryDescription, libraryImages, libraryFAQ } =
     content[0].fields
-  // console.log(content[0].fields)
+  console.log(content[0].fields)
 
   return (
     <section>
@@ -24,8 +24,6 @@ const Library = () => {
       <svg
         style={{
           backgroundColor: THEME.orange,
-          position: 'relative',
-          top: -200,
         }}
         xmlns='http://www.w3.org/2000/svg'
         viewBox='0 0 1440 320'
