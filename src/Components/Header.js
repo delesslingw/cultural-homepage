@@ -182,7 +182,7 @@ const Header = () => {
             marginLeft: 20,
             marginRight: 20,
           }}
-          alt=''
+          alt='Cultural Center Icon'
           src={Icon}
         />
 

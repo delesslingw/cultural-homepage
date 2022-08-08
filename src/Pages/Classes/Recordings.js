@@ -2,6 +2,7 @@ import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import RichText from '../../Components/RichText'
 import useAPI from '../../hooks/useAPI'
+import useBreakpoints from '../../hooks/useBreakpoints'
 import THEME from '../../THEME'
 
 const Recordings = () => {
@@ -9,7 +10,7 @@ const Recordings = () => {
   const { classesRecordingsDescription, classesRecordingsLink } =
     content[0].fields
   const [active, setActive] = useState(false)
-  const navigate = useNavigate()
+  const { breakpoint } = useBreakpoints()
   return (
     <div style={{ backgroundColor: THEME.teal }}>
       <svg
@@ -36,6 +37,18 @@ const Recordings = () => {
             fontSize: 32,
             width: '75vw',
             textAlign: 'center',
+            ...breakpoint({
+              sm: {
+                width: '90%',
+                margin: 'auto',
+                fontSize: 24,
+              },
+              xs: {
+                width: '90%',
+                margin: 'auto',
+                fontSize: 22,
+              },
+            }),
           }}
         >
           <RichText>{classesRecordingsDescription.content}</RichText>
@@ -48,21 +61,37 @@ const Recordings = () => {
           style={{
             textDecoration: 'none',
             color: THEME.black,
-            paddingRight: 50,
-            paddingLeft: 50,
-            paddingTop: 40,
-            paddingBottom: 40,
-            margin: 75,
-            display: 'grid',
-            placeItems: 'center',
             boxShadow: `1px 1px 2px rgba(0,0,0,${active ? 1 : 0.6})`,
-            fontSize: 36,
             ...THEME.NotoSans,
             backgroundColor: THEME.blue,
             borderRadius: 15,
             opacity: active ? 0.9 : 1,
             transition: 'all 0.2s ease',
             cursor: 'pointer',
+            paddingRight: 50,
+            paddingLeft: 50,
+            paddingTop: 40,
+            paddingBottom: 40,
+            marginTop: 75,
+            marginLeft: 75,
+            marginRight: 75,
+            display: 'grid',
+            placeItems: 'center',
+            fontSize: 36,
+            ...breakpoint({
+              sm: {
+                fontSize: 32,
+                marginTop: 50,
+                marginRight: 50,
+                marginLeft: 50,
+              },
+              xs: {
+                fontSize: 24,
+                marginTop: 50,
+                marginLeft: 50,
+                marginRight: 50,
+              },
+            }),
           }}
         >
           CATAWBA ARCHIVES

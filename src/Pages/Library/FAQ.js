@@ -35,6 +35,7 @@ const FAQ = ({ data }) => {
             fontSize: 32,
             ...THEME.DMSerif,
             marginBottom: 32,
+            textAlign: 'center',
           }}
         >
           Frequently Asked Questions

@@ -40,7 +40,6 @@ const Resources = () => {
         <div
           style={{
             display: 'flex',
-
             flexDirection: 'column',
             justifyContent: 'flex-start',
             ...breakpoint({

@@ -39,15 +39,23 @@ const Schedule = () => {
         </h2> */}
         <div
           style={{
-            margin: 30,
-            marginTop: 100,
             width: '75vw',
-            ...breakpoint({}),
+            ...breakpoint({
+              sm: {
+                width: '90%',
+                margin: 'auto',
+              },
+              xs: {
+                width: '90%',
+                margin: 'auto',
+              },
+            }),
           }}
         >
           <img
             style={{ width: '100%' }}
             src={`https:${classesPoster.fields.file.url}`}
+            alt='Latest cultural class poster. To hear the most up-to-date list please contact Teresa Dunlap'
           />
         </div>
       </div>
