@@ -7,14 +7,14 @@ import Hero from './Hero'
 import Resources from './Resources'
 const Library = () => {
   const { content } = useAPI()
-  const { libraryTitle, libraryDescription, libraryImages, libraryFAQ } =
+  const { libraryTitle, libraryDescription, libraryImage, libraryFAQ } =
     content[0].fields
   console.log(content[0].fields)
 
   return (
     <section>
       <Hero
-        image={`https:${libraryImages[0].fields.file.url}`}
+        image={`https:${libraryImage.fields.file.url}`}
         title={libraryTitle}
         description={libraryDescription}
       />

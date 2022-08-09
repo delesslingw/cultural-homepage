@@ -12,21 +12,96 @@ const client = contentful.createClient({
 // This API call will request an entry with the specified ID from the space defined at the top, using a space-specific access token.
 let CONTENT = [],
   HTMLdata
-
+const stringFromRichText = (rt) => {
+  const richTextToString = (obj) => {
+    if (obj.value) {
+      // console.log(obj.value)
+      return obj.value
+    } else {
+      return obj.content.reduce((acc, curr) => {
+        // console.log(acc)
+        return `${acc}${richTextToString(curr)}`
+      }, '')
+    }
+  }
+  return richTextToString(rt).replaceAll('"', '')
+}
+const genHTML = (config) => {
+  return Object.keys(config).reduce((acc, curr) => {
+    return acc.replaceAll(curr, config[curr])
+  }, HTMLdata)
+}
 const app = express()
 app.get('/api', (req, res) => {
   res.send(CONTENT)
 })
 
-const routes = ['/', '/library', '/programs', '/classes', '/thpo']
-routes.forEach((route) => {
-  app.get(route, (_, res) => res.send(HTMLdata))
+app.get('/thpo', (req, res) => {
+  const { thpoTitle, thpoDescription, thpoImage } = CONTENT[0].fields
+
+  const description = stringFromRichText(thpoDescription)
+
+  res.send(
+    genHTML({
+      __META_TITLE__: thpoTitle,
+      __META_IMAGE__: `https:${thpoImage.fields.file.url}`,
+      __META_DESCRIPTION__: description,
+    })
+  )
+})
+app.get('/classes', (req, res) => {
+  const { classesTitle, classesDescription, classesImage } = CONTENT[0].fields
+  // console.log(CONTENT[0].fields)
+  const description = stringFromRichText(classesDescription)
+
+  res.send(
+    genHTML({
+      __META_TITLE__: classesTitle,
+      __META_IMAGE__: `https:${classesImage.fields.file.url}`,
+      __META_DESCRIPTION__: description,
+    })
+  )
+})
+app.get('/programs', (req, res) => {
+  const { programsTitle, programsDescription, programsImage } =
+    CONTENT[0].fields
+  // console.log(CONTENT[0].fields)
+  const description = stringFromRichText(programsDescription)
+
+  res.send(
+    genHTML({
+      __META_TITLE__: programsTitle,
+      __META_IMAGE__: `https:${programsImage.fields.file.url}`,
+      __META_DESCRIPTION__: description,
+    })
+  )
+})
+app.get('/library', (req, res) => {
+  const { libraryTitle, libraryDescription, libraryImage } = CONTENT[0].fields
+  // console.log(CONTENT[0].fields)
+  const description = stringFromRichText(libraryDescription)
+
+  res.send(
+    genHTML({
+      __META_TITLE__: libraryTitle,
+      __META_IMAGE__: `https:${libraryImage.fields.file.url}`,
+      __META_DESCRIPTION__: description,
+    })
+  )
 })
 
 app.get('/', (req, res) => {
-  console.log('get!')
-  // console.log(HTMLdata)
-  res.send(HTMLdata)
+  const { homepageTitle, homepageDescription, homepageHeroImage } =
+    CONTENT[0].fields
+  const description = stringFromRichText(homepageDescription)
+
+  res.send(
+    genHTML({
+      __META_TITLE__: homepageTitle,
+      __META_IMAGE__: `https:${homepageHeroImage[0].fields.file.url}`,
+      __META_DESCRIPTION__: description,
+    })
+  )
 })
 app.get('/')
 app.use(express.static(path.resolve(__dirname, 'build')))
@@ -43,41 +118,14 @@ client
     return
   })
   .then(() => {
-    console.log('gen HTML')
-    // console.log(CONTENT[0])
-    const { homepageTitle, homepageDescription, homepageHeroImage } =
-      CONTENT[0].fields
-
     const indexPath = path.resolve(__dirname, 'build', 'index.html')
     fs.readFile(indexPath, 'utf8', (err, htmlData) => {
       if (err) {
         console.error('Error during file reading', err)
         return res.status(404).end()
       }
-      console.log(homepageDescription.content[0])
-      const richTextToString = (obj) => {
-        if (obj.value) {
-          // console.log(obj.value)
-          return obj.value
-        } else {
-          return obj.content.reduce((acc, curr) => {
-            console.log(acc)
-            return `${acc}${richTextToString(curr)}`
-          }, '')
-        }
-      }
-      let description = richTextToString(homepageDescription)
-      description = description.replaceAll('"', '')
-
-      const config = {
-        __META_OG_TITLE__: homepageTitle,
-        __META_OG_IMAGE__: `https:${homepageHeroImage[0].fields.file.url}`,
-        __META_DESCRIPTION__: description,
-        __META_OG_DESCRIPTION__: description,
-      }
-      HTMLdata = Object.keys(config).reduce((acc, curr) => {
-        return acc.replace(curr, config[curr])
-      }, htmlData)
+      // console.log(homepageDescription.content[0])
+      HTMLdata = htmlData
 
       // HTMLdata = htmlData.replace('__META_OG_TITLE__', homepageTitle)
       app.listen(PORT, (e) => {
