@@ -11,7 +11,7 @@ const FAQ = ({ data }) => {
     <div style={{ backgroundColor: THEME.orange }}>
       <svg
         style={{
-          backgroundColor: THEME.teal,
+          backgroundColor: THEME.white,
         }}
         xmlns='http://www.w3.org/2000/svg'
         viewBox='0 0 1440 320'
