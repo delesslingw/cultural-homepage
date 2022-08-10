@@ -5,11 +5,12 @@ import FAQ from './FAQ'
 import Feature from './Feature'
 import Hero from './Hero'
 import Resources from './Resources'
+import Request from './Request'
 const Library = () => {
   const { content } = useAPI()
   const { libraryTitle, libraryDescription, libraryImage, libraryFAQ } =
     content[0].fields
-  console.log(content[0].fields)
+  // console.log(content[0].fields)
 
   return (
     <section>
@@ -21,9 +22,10 @@ const Library = () => {
       <Feature />
       <Resources />
       <FAQ data={libraryFAQ} />
+      <Request />
       <svg
         style={{
-          backgroundColor: THEME.orange,
+          backgroundColor: THEME.yellow,
         }}
         xmlns='http://www.w3.org/2000/svg'
         viewBox='0 0 1440 320'

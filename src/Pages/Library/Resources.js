@@ -48,6 +48,7 @@ const Resources = () => {
           }}
         >
           {libraryResources.map((link, i) => {
+            const hasImage = link.fields.resourceImage !== undefined
             return (
               <a
                 key={link.fields.resourceLink}
@@ -73,7 +74,9 @@ const Resources = () => {
               >
                 <div
                   style={{
-                    backgroundImage: `url(https://${link.fields.resourceImage.fields.file.url})`,
+                    backgroundImage: hasImage
+                      ? `url(https://${link.fields.resourceImage.fields.file.url})`
+                      : '',
                     height: 100,
                     width: 100,
                     borderRadius: 100,
@@ -82,7 +85,9 @@ const Resources = () => {
                     position: 'absolute',
                     top: -40,
                     left: -40,
-                    boxShadow: `1px 1px 2px rgba(0,0,0,0.5)`,
+                    boxShadow: hasImage
+                      ? `1px 1px 2px rgba(0,0,0,0.5)`
+                      : 'none',
                     cursor: 'pointer',
                   }}
                 ></div>
