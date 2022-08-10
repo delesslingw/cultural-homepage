@@ -236,7 +236,7 @@ const Greeting = () => {
                   flexDirection: 'row',
                   justifyContent: 'flex-start',
 
-                  marginBottom: 20,
+                  marginBottom: 50,
                   marginLeft: 20,
                   marginRight: 20,
                   flexWrap: 'wrap',
@@ -247,7 +247,18 @@ const Greeting = () => {
                       gridColumn: '2 / 3',
                       padding: 0,
                     },
-                    md: {},
+                    lg: {
+                      marginBottom: 40,
+                    },
+                    md: {
+                      marginBottom: 30,
+                    },
+                    sm: {
+                      marginBottom: 30,
+                    },
+                    xs: {
+                      marginBottom: 30,
+                    },
                   }),
                 }}
               >

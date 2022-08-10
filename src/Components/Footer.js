@@ -1,7 +1,11 @@
 import THEME from '../THEME'
 import Svg from './Svg'
-
+import useAPI from '../hooks/useAPI'
+import RichText from './RichText'
 const Footer = () => {
+  const { content } = useAPI()
+  const { homepageFooter } = content[0].fields
+
   return (
     <footer
       style={{
@@ -12,12 +16,16 @@ const Footer = () => {
         ...THEME.Lato,
         fontSize: 20,
         textAlign: 'center',
+        paddingLeft: 50,
+        paddingBottom: 50,
+        paddingRight: 50,
+        display: 'grid',
+        placeItems: 'center',
       }}
     >
-      <h3 style={{ display: 'grid', placeItems: 'center', padding: 36 }}>
-        The Catawba Cultural Center and its programs and facilities are managed
-        by the Cultural Division of Catawba Nation
-      </h3>
+      <div style={{ width: '80%' }}>
+        <RichText>{homepageFooter.content}</RichText>
+      </div>
     </footer>
   )
 }
