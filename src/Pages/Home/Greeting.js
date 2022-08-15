@@ -8,6 +8,7 @@ import { useEffect, useState } from 'react'
 import Svg from '../../Components/Svg'
 import Icon from '../../assets/icon.png'
 import useBreakpoints from '../../hooks/useBreakpoints'
+import { BackgroundImageOnLoad } from 'background-image-on-load'
 const Link = ({ data, i }) => {
   const { breakpoint } = useBreakpoints()
   const link = data
@@ -118,7 +119,7 @@ const Greeting = () => {
     }, 5000)
     return () => clearInterval(int)
   }, [images])
-
+  const imgUrl = `url(http://${imageUrl})`
   return (
     <section>
       <div
@@ -135,7 +136,7 @@ const Greeting = () => {
             width: '100%',
             height: '100%',
             backgroundColor: THEME.navy,
-            backgroundImage: loaded ? `url(http://${imageUrl})` : 'none',
+            backgroundImage: loaded ? imgUrl : 'none',
             backgroundPosition: 'center',
             backgroundSize: 'cover',
             // backgroundBlendMode: 'lighten',
@@ -146,6 +147,11 @@ const Greeting = () => {
             transition: 'all 0.8s ease-in',
           }}
         >
+          {/* <BackgroundImageOnLoad
+            src={imgUrl}
+            onLoadBg={() => setLoaded(true)}
+            onError={(err) => console.log('error', err)}
+          /> */}
           <div>
             <Svg
               fill={THEME.navy}

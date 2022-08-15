@@ -106,36 +106,46 @@ app.get('/', (req, res) => {
 app.get('/')
 app.use(express.static(path.resolve(__dirname, 'build')))
 const PORT = process.env.PORT || 3333
-
-client
-  .getEntries()
-  .then(({ items }) => {
-    // return obj.filter(o => o.sys)
-    CONTENT = items.filter((o) => {
-      // console.log(o.sys.contentType.sys)
-      return o.sys.contentType.sys.id == 'homepage'
+const fetchData = () => {
+  return client
+    .getEntries()
+    .then(({ items }) => {
+      // return obj.filter(o => o.sys)
+      CONTENT = items.filter((o) => {
+        // console.log(o.sys.contentType.sys)
+        return o.sys.contentType.sys.id == 'homepage'
+      })
+      return
     })
-    return
-  })
-  .then(() => {
-    const indexPath = path.resolve(__dirname, 'build', 'index.html')
-    fs.readFile(indexPath, 'utf8', (err, htmlData) => {
-      if (err) {
-        console.error('Error during file reading', err)
-        return res.status(404).end()
-      }
-      // console.log(homepageDescription.content[0])
-      HTMLdata = htmlData
-
-      // HTMLdata = htmlData.replace('__META_OG_TITLE__', homepageTitle)
-      app.listen(PORT, (e) => {
-        if (e) {
-          console.error(e)
-          return
+    .then(() => {
+      const indexPath = path.resolve(__dirname, 'build', 'index.html')
+      fs.readFile(indexPath, 'utf8', (err, htmlData) => {
+        if (err) {
+          console.error('Error during file reading', err)
+          return res.status(404).end()
         }
+        // console.log(homepageDescription.content[0])
+        HTMLdata = htmlData
 
-        console.log(`Listening on http://localhost:${PORT}`)
+        // HTMLdata = htmlData.replace('__META_OG_TITLE__', homepageTitle)
+        return
       })
     })
+    .catch(console.error)
+}
+
+fetchData().then(() => {
+  app.listen(PORT, (e) => {
+    if (e) {
+      console.error(e)
+      return
+    }
+
+    console.log(`Listening on http://localhost:${PORT}`)
   })
-  .catch(console.error)
+})
+
+setInterval(() => {
+  console.log('refetching')
+  fetchData()
+}, 1000 * 60 * 60 * 12)
