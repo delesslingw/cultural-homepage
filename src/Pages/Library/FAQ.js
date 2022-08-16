@@ -4,14 +4,14 @@ import useBreakpoints from '../../hooks/useBreakpoints'
 
 import THEME from '../../THEME'
 // TODO: refactor & restyle FAQ
-const FAQ = ({ data }) => {
+const FAQ = ({ data, bg = THEME.white }) => {
   const libraryFAQ = data
   const { breakpoint } = useBreakpoints()
   return (
     <div style={{ backgroundColor: THEME.orange }}>
       <svg
         style={{
-          backgroundColor: THEME.white,
+          backgroundColor: bg,
         }}
         xmlns='http://www.w3.org/2000/svg'
         viewBox='0 0 1440 320'

@@ -23,7 +23,7 @@ const Classes = () => {
       />
       <Schedule />
       <Recordings />
-      <FAQ data={classesFAQ} />
+      <FAQ data={classesFAQ} bg={THEME.teal} />
       <svg
         style={{
           backgroundColor: THEME.orange,
