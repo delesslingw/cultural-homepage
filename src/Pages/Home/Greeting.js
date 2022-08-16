@@ -8,7 +8,7 @@ import { useEffect, useState } from 'react'
 import Svg from '../../Components/Svg'
 import Icon from '../../assets/icon.png'
 import useBreakpoints from '../../hooks/useBreakpoints'
-import { BackgroundImageOnLoad } from 'background-image-on-load'
+
 const Link = ({ data, i }) => {
   const { breakpoint } = useBreakpoints()
   const link = data
