@@ -10,15 +10,15 @@ const Footer = () => {
     <footer
       style={{
         width: '100%',
-        height: 50,
+        minHeight: 50,
         backgroundColor: THEME.navy,
         color: THEME.white,
         ...THEME.Lato,
         fontSize: 20,
         textAlign: 'center',
-        paddingLeft: 50,
+
         paddingBottom: 50,
-        paddingRight: 50,
+
         display: 'grid',
         placeItems: 'center',
       }}

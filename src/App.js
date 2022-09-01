@@ -7,6 +7,7 @@ import Classes from './Pages/Classes'
 import Programs from './Pages/Programs'
 import THPO from './Pages/THPO'
 import { BreakpointTool } from './hooks/useBreakpoints'
+import Schedule from './Pages/Schedule'
 
 function App() {
   return (
@@ -18,6 +19,7 @@ function App() {
         <Route path='/programs' element={<Programs />}></Route>
         <Route path='/classes' element={<Classes />}></Route>
         <Route path='/library' element={<Library />}></Route>
+        <Route path='/schedule' element={<Schedule />}></Route>
         <Route path='/' exact element={<Home />}></Route>
       </Routes>
       <Footer></Footer>

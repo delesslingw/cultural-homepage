@@ -11,6 +11,7 @@ const client = contentful.createClient({
 })
 // This API call will request an entry with the specified ID from the space defined at the top, using a space-specific access token.
 let CONTENT = [],
+  DIRECTORY = [],
   HTMLdata
 const stringFromRichText = (rt) => {
   const richTextToString = (obj) => {
@@ -32,6 +33,9 @@ const genHTML = (config) => {
   }, HTMLdata)
 }
 const app = express()
+app.get('/api/directory', (req, res) => {
+  res.send(DIRECTORY)
+})
 app.get('/api', (req, res) => {
   res.send(CONTENT)
 })
@@ -89,7 +93,17 @@ app.get('/library', (req, res) => {
     })
   )
 })
-
+app.get('/schedule', (req, res) => {
+  const { homepageHeroImage } = CONTENT[0].fields
+  res.send(
+    genHTML({
+      __META_TITLE__: 'Catawba Cultural Workers Scheduling Page',
+      __META_IMAGE__: `https:${homepageHeroImage[0].fields.file.url}`,
+      __META_DESCRIPTION__:
+        'Directory for scheduling page for Cultural Center staff and cultural contractors.',
+    })
+  )
+})
 app.get('/', (req, res) => {
   const { homepageTitle, homepageDescription, homepageHeroImage } =
     CONTENT[0].fields
@@ -103,7 +117,7 @@ app.get('/', (req, res) => {
     })
   )
 })
-app.get('/')
+// app.get('/')
 app.use(express.static(path.resolve(__dirname, 'build')))
 const PORT = process.env.PORT || 3333
 const fetchData = () => {
@@ -134,14 +148,22 @@ const fetchData = () => {
     .catch(console.error)
 }
 
-fetchData().then(() => {
-  app.listen(PORT, (e) => {
-    if (e) {
-      console.error(e)
-      return
-    }
+const fetchDirectory = () => {
+  return client.getEntry('4KH1nVeg3nBc3lCCFBx7Vf').then((o) => {
+    DIRECTORY = o.fields.directoryEntries
+  })
+}
 
-    console.log(`Listening on http://localhost:${PORT}`)
+fetchData().then(() => {
+  fetchDirectory().then(() => {
+    app.listen(PORT, (e) => {
+      if (e) {
+        console.error(e)
+        return
+      }
+
+      console.log(`Listening on http://localhost:${PORT}`)
+    })
   })
 })
 
