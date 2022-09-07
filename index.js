@@ -100,7 +100,7 @@ app.get('/schedule', (req, res) => {
       __META_TITLE__: 'Catawba Cultural Workers Scheduling Page',
       __META_IMAGE__: `https:${homepageHeroImage[0].fields.file.url}`,
       __META_DESCRIPTION__:
-        'Directory for scheduling page for Cultural Center staff and cultural contractors.',
+        'Directory of scheduling pages for Cultural Center staff and cultural contractors.',
     })
   )
 })

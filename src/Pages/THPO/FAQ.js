@@ -1,4 +1,5 @@
-import React, { useEffect } from 'react'
+import React from 'react'
+import RichText from '../../Components/RichText'
 import THEME from '../../THEME'
 const Entry = ({ q, a }) => {
   return (
@@ -21,11 +22,11 @@ const Entry = ({ q, a }) => {
           marginBottom: 5,
         }}
       ></div>
-      <p>{a}</p>
+      <RichText>{a.content}</RichText>
     </div>
   )
 }
-const FAQ = () => {
+const FAQ = ({ data }) => {
   return (
     <div
       style={{ position: 'relative', top: -30, backgroundColor: THEME.white }}
@@ -52,7 +53,11 @@ const FAQ = () => {
           <h2 style={{ ...THEME.DMSerif, fontSize: 36, marginBottom: 36 }}>
             Frequently Asked Questions
           </h2>
-          <Entry
+          {data.map((entry) => {
+            const { question, answer } = entry.fields
+            return <Entry key={question} q={question} a={answer} />
+          })}
+          {/* <Entry
             q={`Q: What does THPO stand for?`}
             a={`A: It is a mystery that we will never expose.`}
           />
@@ -63,7 +68,7 @@ const FAQ = () => {
           <Entry
             q={`Q: What does THPO stand for?`}
             a={`A: It is a mystery that we will never expose.`}
-          />
+          /> */}
         </div>
       </div>
     </div>

@@ -33,7 +33,7 @@ const RichText = ({ children, style = {} }) => {
             )
           case 'paragraph':
             return (
-              <p key={i} style={{}}>
+              <p key={i} style={{ paddingBottom: 20 }}>
                 <RichText>{content}</RichText>
               </p>
             )

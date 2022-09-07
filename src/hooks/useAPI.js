@@ -21,7 +21,7 @@ export const APIProvider = ({ children }) => {
         fetch('/api/directory')
           .then((o) => o.json())
           .then((o) => {
-            console.log(o)
+            // console.log(o)
             setDirectory(o)
             setIsLoading(false)
           })
