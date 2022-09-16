@@ -3,7 +3,7 @@ const fs = require('fs')
 const path = require('path')
 const express = require('express')
 const contentful = require('contentful')
-const sslRedirect = require('heroku-ssl-redirect')
+const sslRedirect = require('heroku-ssl-redirect').default
 // var httpsRedirect = require('express-https-redirect')
 // var app = express();
 
@@ -38,6 +38,7 @@ const genHTML = (config) => {
 }
 const app = express()
 app.use(sslRedirect())
+
 app.get('/api/directory', (req, res) => {
   res.send(DIRECTORY)
 })
