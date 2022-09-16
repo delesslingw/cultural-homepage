@@ -50,6 +50,7 @@ const Request = () => {
             borderRadius: 10,
             margin: 30,
             opacity: active ? 1 : 0.9,
+            textAlign: 'center',
           }}
           href='https://forms.office.com/Pages/ResponsePage.aspx?id=uqGWFzDYEESBxFHXOU47Sh9Dq-QenBlMi92axkI9AT9UQ0NIVDY1TVoxNENYTzZMVko3RUZWV0M1QS4u'
         >

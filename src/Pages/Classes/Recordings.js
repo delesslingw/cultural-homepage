@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { useNavigate } from 'react-router-dom'
+
 import RichText from '../../Components/RichText'
 import useAPI from '../../hooks/useAPI'
 import useBreakpoints from '../../hooks/useBreakpoints'
@@ -78,6 +78,8 @@ const Recordings = () => {
             display: 'grid',
             placeItems: 'center',
             fontSize: 36,
+            marginBottom: 10,
+            textAlign: 'center',
             ...breakpoint({
               sm: {
                 fontSize: 32,
