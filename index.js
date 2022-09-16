@@ -3,6 +3,9 @@ const fs = require('fs')
 const path = require('path')
 const express = require('express')
 const contentful = require('contentful')
+var httpsRedirect = require('express-https-redirect')
+// var app = express();
+
 const client = contentful.createClient({
   // This is the space ID. A space is like a project folder in Contentful terms
   space: process.env.CONTENTFUL_SPACE,
@@ -33,6 +36,7 @@ const genHTML = (config) => {
   }, HTMLdata)
 }
 const app = express()
+app.use('/', httpsRedirect())
 app.get('/api/directory', (req, res) => {
   res.send(DIRECTORY)
 })
