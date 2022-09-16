@@ -3,7 +3,8 @@ const fs = require('fs')
 const path = require('path')
 const express = require('express')
 const contentful = require('contentful')
-var httpsRedirect = require('express-https-redirect')
+import sslRedirect from 'heroku-ssl-redirect'
+// var httpsRedirect = require('express-https-redirect')
 // var app = express();
 
 const client = contentful.createClient({
@@ -36,7 +37,7 @@ const genHTML = (config) => {
   }, HTMLdata)
 }
 const app = express()
-app.use('/', httpsRedirect())
+app.use(sslRedirect())
 app.get('/api/directory', (req, res) => {
   res.send(DIRECTORY)
 })
