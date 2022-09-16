@@ -3,7 +3,7 @@ const fs = require('fs')
 const path = require('path')
 const express = require('express')
 const contentful = require('contentful')
-import sslRedirect from 'heroku-ssl-redirect'
+const sslRedirect = require('heroku-ssl-redirect')
 // var httpsRedirect = require('express-https-redirect')
 // var app = express();
 
