@@ -6,7 +6,7 @@ import Library from './Pages/Library'
 import Classes from './Pages/Classes'
 import Programs from './Pages/Programs'
 import THPO from './Pages/THPO'
-import { BreakpointTool } from './hooks/useBreakpoints'
+// import { BreakpointTool } from './hooks/useBreakpoints'
 import Schedule from './Pages/Schedule'
 
 function App() {
