@@ -86,7 +86,7 @@ const Visit = () => {
               style={{
                 height: 450,
                 border: 0,
-                width: '100vw',
+                width: '95vw',
                 ...breakpoint({
                   xl: {
                     width: 600,
