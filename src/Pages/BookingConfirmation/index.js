@@ -40,7 +40,7 @@ const BookingConfirmation = () => {
         </p>
         <p style={{ ...THEME.Lato, fontSize: 20, paddingBottom: 10 }}>
           Thank you for booking a time to meet with the Cultural Programs team.
-          You should receive a calendar invite shortly to your email address(
+          You should receive a calendar invite shortly to your email address (
           {data.email}).
         </p>
         <p style={{ fontWeight: 'bold', ...THEME.Lato, fontSize: 20 }}>
