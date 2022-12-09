@@ -8,6 +8,7 @@ import Programs from './Pages/Programs'
 import THPO from './Pages/THPO'
 // import { BreakpointTool } from './hooks/useBreakpoints'
 import Schedule from './Pages/Schedule'
+import BookingConfirmation from './Pages/BookingConfirmation'
 
 function App() {
   return (
@@ -20,6 +21,10 @@ function App() {
         <Route path='/classes' element={<Classes />}></Route>
         <Route path='/library' element={<Library />}></Route>
         <Route path='/schedule' element={<Schedule />}></Route>
+        <Route
+          path='/booking-confirmation'
+          element={<BookingConfirmation />}
+        ></Route>
         <Route path='/' exact element={<Home />}></Route>
       </Routes>
       <Footer></Footer>

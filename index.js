@@ -110,6 +110,16 @@ app.get('/schedule', (req, res) => {
     })
   )
 })
+app.get('/booking-confirmation', (req, res) => {
+  const { homepageHeroImage } = CONTENT[0].fields
+  res.send(
+    genHTML({
+      __META_TITLE__: 'Catawba Cultural Center',
+      __META_IMAGE__: `https:${homepageHeroImage[0].fields.file.url}`,
+      __META_DESCRIPTION__: 'Program Request Booking Confirmation Page',
+    })
+  )
+})
 app.get('/', (req, res) => {
   const { homepageTitle, homepageDescription, homepageHeroImage } =
     CONTENT[0].fields
