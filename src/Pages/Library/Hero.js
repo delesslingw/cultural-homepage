@@ -23,7 +23,7 @@ const Hero = ({ title, description, image, backgroundColor = THEME.blue }) => {
           backgroundSize: 'cover',
           backgroundPosition: 'center',
 
-          width: '100vw',
+          width: '100%',
           height: '90vh',
         }}
       >
