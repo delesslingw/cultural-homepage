@@ -227,24 +227,29 @@ function Directory() {
         }),
       }}
     >
-      <ContactCard email='archives@catawba.com' extension='0000'>
-        General Questions
-      </ContactCard>
-      <ContactCard email='language@catawba.com' extension='0001'>
-        Language Questions
-      </ContactCard>
-      <ContactCard email='tradingpost@catawba.com' extensions='0002'>
-        Trading Post Questions
-      </ContactCard>
-      <ContactCard email='library@catawba.com' extension='0003'>
-        Library Questions
-      </ContactCard>
-      <ContactCard email='thpo@catawba.com' extension='0004'>
-        Tribal Historic Preservation Office
-      </ContactCard>
-      <ContactCard email='culturalprograms@catawba.com' extension='0005'>
+      <ContactCard email='culturalprograms@catawba.com' extension='424'>
         School or Other Public Programs
       </ContactCard>
+      <ContactCard extension='738'>
+        Cultural Classes and other Citizen Programming
+      </ContactCard>
+      <ContactCard email='tradingpost@catawba.com' extensions='422'>
+        Trading Post (Store) Questions
+      </ContactCard>
+      <ContactCard email='thpo@catawba.com' extension='426'>
+        Tribal Historic Preservation Office
+      </ContactCard>
+      <ContactCard extension='739'>Language Questions</ContactCard>
+      <ContactCard email='language@catawba.com' extension='739'>
+        Language Questions
+      </ContactCard>
+      <ContactCard email='library@catawba.com' extension='740'>
+        Library Questions
+      </ContactCard>
+      <ContactCard email='archives@catawba.com' extension='421'>
+        Archival and Research Questions
+      </ContactCard>
+      <ContactCard extension='423'>Cultural Director</ContactCard>
     </div>
   )
 }
@@ -256,7 +261,7 @@ function ContactCard({ children, email, extension }) {
     <div
       style={{
         backgroundColor: THEME.white,
-        minHeight: '100px',
+        // minHeight: '100px',
         borderRadius: '5px',
         boxShadow: `${isActive ? '2px 2px 2px' : '1px 1px 1px'} rgba(0,0,0,${
           isActive ? 0.5 : 0.3
