@@ -10,8 +10,9 @@ const Feature = () => {
   const { libraryFeatureBooks } = content[0].fields
 
   const { breakpoint } = useBreakpoints()
+  // overflow: 'hidden' is hacky but it works!
   return (
-    <div style={{ backgroundColor: THEME.yellow }}>
+    <div style={{ backgroundColor: THEME.yellow, overflow: 'hidden' }}>
       <svg
         style={{
           backgroundColor: THEME.blue,
