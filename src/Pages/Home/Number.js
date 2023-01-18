@@ -5,7 +5,11 @@ import useBreakpoints from '../../hooks/useBreakpoints'
 import { AiOutlineMail as EmailIcon } from 'react-icons/ai'
 import { BsTelephone as PhoneIcon } from 'react-icons/bs'
 import { useState } from 'react'
+import useAPI from '../../hooks/useAPI'
+import RichText from '../../Components/RichText'
 const Visit = () => {
+  const { content } = useAPI()
+
   const { breakpoint } = useBreakpoints()
 
   return (
@@ -114,9 +118,9 @@ const Visit = () => {
                   }),
                 }}
               >
-                We look forward to answering your questions or helping you in
-                any way we can. Feel free to email us or call during regular
-                business hours. We will get back with you as soon as possible.
+                <RichText>
+                  {content[0].fields.contactUsDescription.content}
+                </RichText>
               </h3>
               <div
                 style={{
@@ -182,7 +186,7 @@ const Visit = () => {
                     }),
                   }}
                 >
-                  (803) 328-2427
+                  {content[0].fields.contactUsNumber}
                 </p>
               </div>
             </div>
@@ -203,6 +207,7 @@ const Visit = () => {
 export default Visit
 
 function Directory() {
+  const { content } = useAPI()
   const { breakpoint } = useBreakpoints()
   return (
     <div
@@ -227,29 +232,18 @@ function Directory() {
         }),
       }}
     >
-      <ContactCard email='culturalprograms@catawba.com' extension='424'>
-        School or Other Public Programs
-      </ContactCard>
-      <ContactCard extension='738'>
-        Cultural Classes and other Citizen Programming
-      </ContactCard>
-      <ContactCard email='tradingpost@catawba.com' extensions='422'>
-        Trading Post (Store) Questions
-      </ContactCard>
-      <ContactCard email='thpo@catawba.com' extension='426'>
-        Tribal Historic Preservation Office
-      </ContactCard>
-      <ContactCard extension='739'>Language Questions</ContactCard>
-      <ContactCard email='language@catawba.com' extension='739'>
-        Language Questions
-      </ContactCard>
-      <ContactCard email='library@catawba.com' extension='740'>
-        Library Questions
-      </ContactCard>
-      <ContactCard email='archives@catawba.com' extension='421'>
-        Archival and Research Questions
-      </ContactCard>
-      <ContactCard extension='423'>Cultural Director</ContactCard>
+      {content[0].fields.contactUsDirectory.map((obj, i) => {
+        const { contactEmail, contactTitle, contactExtension } = obj.fields
+        return (
+          <ContactCard
+            key={i}
+            email={contactEmail}
+            extension={contactExtension}
+          >
+            {contactTitle}
+          </ContactCard>
+        )
+      })}
     </div>
   )
 }
