@@ -251,7 +251,7 @@ function Directory() {
 function ContactCard({ children, email, extension }) {
   const [isActive, setIsActive] = useState()
 
-  return (
+  return email == null ? null : (
     <div
       style={{
         backgroundColor: THEME.white,
@@ -301,35 +301,6 @@ function ContactCard({ children, email, extension }) {
             <EmailIcon style={{ color: THEME.white, fontSize: 15 }} />
           </div>
           <p>{email}</p>
-        </div>
-      )}
-      {extension == null ? null : (
-        <div
-          style={{
-            paddingLeft: 10,
-            marginTop: 10,
-            display: 'flex',
-            alignItems: 'center',
-            ...THEME.Lato,
-          }}
-        >
-          <div
-            style={{
-              width: 25,
-              height: 25,
-              borderRadius: 25,
-              backgroundColor: THEME.navy,
-              display: 'grid',
-              placeItems: 'center',
-              marginRight: 10,
-            }}
-          >
-            <PhoneIcon style={{ color: THEME.white, fontSize: 15 }} />
-          </div>
-          <p>
-            <span style={{ fontStyle: 'italic' }}>extension</span>
-            {` ${extension}`}
-          </p>
         </div>
       )}
     </div>
