@@ -17,6 +17,7 @@ const Visit = () => {
       <section
         style={{
           backgroundColor: THEME.teal,
+          position: 'relative',
         }}
       >
         <Svg
@@ -195,8 +196,7 @@ const Visit = () => {
         </div>
         <Svg
           fill={THEME.navy}
-          style={{ backgroundColor: THEME.teal }}
-          height={320}
+          style={{ backgroundColor: THEME.teal, position: 'relative', top: 3 }}
           d='M0,160L48,149.3C96,139,192,117,288,128C384,139,480,181,576,170.7C672,160,768,96,864,96C960,96,1056,160,1152,186.7C1248,213,1344,203,1392,197.3L1440,192L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z'
         />
       </section>
