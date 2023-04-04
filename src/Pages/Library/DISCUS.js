@@ -100,6 +100,7 @@ const DISCUS = () => {
               marginTop: 30,
               marginBottom: 40,
               textAlign: 'center',
+              width: breakpoint({ xl: '80%' }),
             }}
           >
             Discus provides all South Carolinians with access to an electronic
