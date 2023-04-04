@@ -1,5 +1,6 @@
 import React from 'react'
 import RichText from '../../Components/RichText'
+import Svg from '../../Components/Svg'
 
 import useAPI from '../../hooks/useAPI'
 import useBreakpoints from '../../hooks/useBreakpoints'
@@ -13,21 +14,14 @@ const Feature = () => {
   // overflow: 'hidden' is hacky but it works!
   return (
     <div style={{ backgroundColor: THEME.yellow, overflow: 'hidden' }}>
-      <svg
+      <Svg
         style={{
           backgroundColor: THEME.blue,
           position: 'relative',
         }}
-        xmlns='http://www.w3.org/2000/svg'
-        viewBox='0 0 1440 320'
-      >
-        <path
-          fill={THEME.yellow}
-          fillOpacity='1'
-          d='M0,32L48,69.3C96,107,192,181,288,186.7C384,192,480,128,576,101.3C672,75,768,85,864,80C960,75,1056,53,1152,69.3C1248,85,1344,139,1392,165.3L1440,192L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z'
-        ></path>
-      </svg>
-
+        fill={THEME.yellow}
+        d='M0,32L48,69.3C96,107,192,181,288,186.7C384,192,480,128,576,101.3C672,75,768,85,864,80C960,75,1056,53,1152,69.3C1248,85,1344,139,1392,165.3L1440,192L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z'
+      />
       <div
         style={{
           display: 'flex',

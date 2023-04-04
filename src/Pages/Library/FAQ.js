@@ -1,5 +1,6 @@
 import React from 'react'
 import RichText from '../../Components/RichText'
+import Svg from '../../Components/Svg'
 import useBreakpoints from '../../hooks/useBreakpoints'
 
 import THEME from '../../THEME'
@@ -9,19 +10,13 @@ const FAQ = ({ data, bg = THEME.white }) => {
   const { breakpoint } = useBreakpoints()
   return (
     <div style={{ backgroundColor: THEME.orange }}>
-      <svg
+      <Svg
         style={{
           backgroundColor: bg,
         }}
-        xmlns='http://www.w3.org/2000/svg'
-        viewBox='0 0 1440 320'
-      >
-        <path
-          fill={THEME.orange}
-          fillOpacity='1'
-          d='M0,160L48,160C96,160,192,160,288,149.3C384,139,480,117,576,101.3C672,85,768,75,864,96C960,117,1056,171,1152,160C1248,149,1344,75,1392,37.3L1440,0L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z'
-        ></path>
-      </svg>
+        fill={THEME.orange}
+        d='M0,160L48,160C96,160,192,160,288,149.3C384,139,480,117,576,101.3C672,85,768,75,864,96C960,117,1056,171,1152,160C1248,149,1344,75,1392,37.3L1440,0L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z'
+      />
       <div
         style={{
           backgroundColor: THEME.orange,

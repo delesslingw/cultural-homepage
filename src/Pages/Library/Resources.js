@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import RichText from '../../Components/RichText'
+import Svg from '../../Components/Svg'
 import useAPI from '../../hooks/useAPI'
 import useBreakpoints from '../../hooks/useBreakpoints'
 import THEME from '../../THEME'
@@ -81,17 +82,11 @@ const Resources = () => {
   const { libraryResources } = content[0].fields
   return (
     <div style={{ backgroundColor: THEME.white }}>
-      <svg
-        style={{ backgroundColor: THEME.yellow }}
-        xmlns='http://www.w3.org/2000/svg'
-        viewBox='0 0 1440 320'
-      >
-        <path
-          fill={THEME.white}
-          fillOpacity='1'
-          d='M0,32L48,58.7C96,85,192,139,288,160C384,181,480,171,576,176C672,181,768,203,864,218.7C960,235,1056,245,1152,224C1248,203,1344,149,1392,122.7L1440,96L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z'
-        ></path>
-      </svg>
+      <Svg
+        style={{ backgroundColor: THEME.teal }}
+        fill={THEME.white}
+        d='M0,32L48,58.7C96,85,192,139,288,160C384,181,480,171,576,176C672,181,768,203,864,218.7C960,235,1056,245,1152,224C1248,203,1344,149,1392,122.7L1440,96L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z'
+      />
       <div
         style={{
           minHeight: '50vh',
