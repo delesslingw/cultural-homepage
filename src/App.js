@@ -6,14 +6,14 @@ import Library from './Pages/Library'
 import Classes from './Pages/Classes'
 import Programs from './Pages/Programs'
 import THPO from './Pages/THPO'
-// import { BreakpointTool } from './hooks/useBreakpoints'
+import { BreakpointTool } from './hooks/useBreakpoints'
 import Schedule from './Pages/Schedule'
 import BookingConfirmation from './Pages/BookingConfirmation'
 
 function App() {
   return (
     <div className='App' style={{ position: 'relative' }}>
-      {/* <BreakpointTool /> */}
+      <BreakpointTool />
       <Header></Header>
       <Routes>
         <Route path='/THPO' element={<THPO />}></Route>
