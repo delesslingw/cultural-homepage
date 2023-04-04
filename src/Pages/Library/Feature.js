@@ -28,17 +28,6 @@ const Feature = () => {
           flexDirection: 'column',
           alignItems: 'center',
           position: 'relative',
-          ...breakpoint({
-            xl: {
-              top: -150,
-              right: -150,
-            },
-            lg: {
-              paddingLeft: 30,
-              paddingRight: 30,
-            },
-            sm: {},
-          }),
         }}
       >
         <h2
@@ -48,39 +37,22 @@ const Feature = () => {
             fontStyle: 'italic',
 
             position: 'relative',
-            ...breakpoint({
-              xl: {
-                fontSize: 36,
-                marginBottom: 100,
-              },
-              lg: {
-                fontSize: 32,
-                marginBottom: 40,
-                alignSelf: 'flex-start',
-              },
-              md: {
-                fontSize: 24,
-                top: -70,
-                right: -100,
-              },
-              sm: {
-                fontSize: 28,
-                alignSelf: 'flex-start',
-                top: -20,
-                marginLeft: 10,
-              },
-              xs: {
-                fontSize: 28,
-                alignSelf: 'flex-start',
-                top: -20,
-                marginLeft: 10,
-              },
+            placeSelf: 'center',
+            fontSize: 30,
+            width: breakpoint({
+              xs: '80%',
+              sm: '80%',
+              md: '80%',
+              lg: '60%',
+              xl: '50%',
             }),
+            marginBottom: 20,
           }}
         >
-          Catawba Book Club is currently reading...
+          Catawba Book Club will begin meeting again in May. Please contact the
+          Tribal Librarian to sign up!
         </h2>
-        <div
+        {/* <div
           style={{
             display: 'flex',
             alignItems: 'center',
@@ -203,7 +175,7 @@ const Feature = () => {
               </RichText>
             </div>
           </div>
-        </div>
+        </div> */}
       </div>
     </div>
   )
