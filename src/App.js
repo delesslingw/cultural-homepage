@@ -13,7 +13,7 @@ import BookingConfirmation from './Pages/BookingConfirmation'
 function App() {
   return (
     <div className='App' style={{ position: 'relative' }}>
-      {/* <BreakpointTool /> */}
+      {process.env.NODE_ENV == 'development' ? <BreakpointTool /> : null}
       <Header></Header>
       <Routes>
         <Route path='/THPO' element={<THPO />}></Route>
