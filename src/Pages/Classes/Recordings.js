@@ -14,7 +14,7 @@ const Recordings = () => {
   return (
     <div style={{ backgroundColor: THEME.teal }}>
       <svg
-        style={{ backgroundColor: THEME.white }}
+        style={{ backgroundColor: THEME.yellow }}
         xmlns='http://www.w3.org/2000/svg'
         viewBox='0 0 1440 320'
       >

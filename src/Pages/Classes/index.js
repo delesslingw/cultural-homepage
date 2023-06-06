@@ -21,7 +21,7 @@ const Classes = () => {
         image={`https:${classesImage.fields.file.url}`}
         backgroundColor={THEME.yellow}
       />
-      <Schedule />
+      {/* <Schedule /> */}
       <Recordings />
       <FAQ data={classesFAQ} bg={THEME.teal} />
       <svg
