@@ -25,6 +25,7 @@
         "start": "node .",
         "server": "node .",
         "client": "react-scripts start",
+        "build": "react-scripts build",
         "dev": "concurrently -n api,web -c auto \"npm:server\" \"npm:client\""
     },
     "eslintConfig": {
