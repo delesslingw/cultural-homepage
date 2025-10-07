@@ -1,58 +1,57 @@
-import React from 'react'
-import RichText from '../../Components/RichText'
-import Svg from '../../Components/Svg'
+import React from "react";
+import RichText from "../../Components/RichText";
+import Svg from "../../Components/Svg";
 
-import useAPI from '../../hooks/useAPI'
-import useBreakpoints from '../../hooks/useBreakpoints'
-import THEME from '../../THEME'
+import useAPI from "../../hooks/useAPI";
+import useBreakpoints from "../../hooks/useBreakpoints";
+import THEME from "../../THEME";
 
 const Feature = () => {
-  const { content } = useAPI()
-  const { libraryFeatureBooks } = content[0].fields
+    const { content } = useAPI();
+    const { libraryFeatureBooks } = content[0].fields;
 
-  const { breakpoint } = useBreakpoints()
-  // overflow: 'hidden' is hacky but it works!
-  return (
-    <div style={{ backgroundColor: THEME.yellow, overflow: 'hidden' }}>
-      <Svg
-        style={{
-          backgroundColor: THEME.blue,
-          position: 'relative',
-        }}
-        fill={THEME.yellow}
-        d='M0,32L48,69.3C96,107,192,181,288,186.7C384,192,480,128,576,101.3C672,75,768,85,864,80C960,75,1056,53,1152,69.3C1248,85,1344,139,1392,165.3L1440,192L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z'
-      />
-      <div
-        style={{
-          display: 'flex',
-          flexDirection: 'column',
-          alignItems: 'center',
-          position: 'relative',
-        }}
-      >
-        <h2
-          style={{
-            textAlign: 'center',
-            ...THEME.DMSerif,
-            fontStyle: 'italic',
+    const { breakpoint } = useBreakpoints();
+    // overflow: 'hidden' is hacky but it works!
+    return (
+        <div style={{ backgroundColor: THEME.yellow, overflow: "hidden" }}>
+            <Svg
+                style={{
+                    backgroundColor: THEME.blue,
+                    position: "relative",
+                }}
+                fill={THEME.yellow}
+                d="M0,32L48,69.3C96,107,192,181,288,186.7C384,192,480,128,576,101.3C672,75,768,85,864,80C960,75,1056,53,1152,69.3C1248,85,1344,139,1392,165.3L1440,192L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"
+            />
+            <div
+                style={{
+                    display: "flex",
+                    flexDirection: "column",
+                    alignItems: "center",
+                    position: "relative",
+                }}
+            >
+                <h2
+                    style={{
+                        textAlign: "center",
+                        ...THEME.DMSerif,
+                        fontStyle: "italic",
 
-            position: 'relative',
-            placeSelf: 'center',
-            fontSize: 30,
-            width: breakpoint({
-              xs: '80%',
-              sm: '80%',
-              md: '80%',
-              lg: '60%',
-              xl: '50%',
-            }),
-            marginBottom: 20,
-          }}
-        >
-          Catawba Book Club will begin meeting again in May. Please contact the
-          Tribal Librarian to sign up!
-        </h2>
-        {/* <div
+                        position: "relative",
+                        placeSelf: "center",
+                        fontSize: 30,
+                        width: breakpoint({
+                            xs: "80%",
+                            sm: "80%",
+                            md: "80%",
+                            lg: "60%",
+                            xl: "50%",
+                        }),
+                        marginBottom: 20,
+                    }}
+                >
+                    Catawba Book Club will begin meeting again in May. Please contact the Tribal Librarian to sign up!
+                </h2>
+                {/* <div
           style={{
             display: 'flex',
             alignItems: 'center',
@@ -66,7 +65,7 @@ const Feature = () => {
             style={{
               backgroundColor: THEME.blue,
               marginRight: 30,
-              backgroundImage: `url(https:${libraryFeatureBooks[0].fields.bookImage.fields.file.url})`,
+              backgroundImage: `url(${libraryFeatureBooks[0].fields.bookImage.fields.file.url})`,
               backgroundPosition: 'center',
               backgroundSize: 'cover',
               borderRadius: 10,
@@ -176,9 +175,9 @@ const Feature = () => {
             </div>
           </div>
         </div> */}
-      </div>
-    </div>
-  )
-}
+            </div>
+        </div>
+    );
+};
 
-export default Feature
+export default Feature;
