@@ -1,19 +1,11 @@
-TODO: SEO, server-side, use content-model
-TODO: make waves adjustable
-TODO: Our Story
+# Cultural Homepage
 
-TODO: Refactor SVG
-Notes:
--Header Picture (Teresa Dunlap)
--Current Seasonal Calendar (3 months) (Teresa Dunlap)
--FAQ (Make a repeat of FAQ from Poster)
--(Digital Classes - Hyperlink to the archives) - construction of clay strainer, foraging, story-telling, LINK
+## Commands
 
+Start development servers (backend and frontend): `npm run dev`
+Build react app: `npm run build`
+Start server: `npm start` note: if the react app hasn't been built then npm start won't work as expected
 
+## Ignore /scripts/
 
-
-
-
-
-
-
+These were used to migrate and decouple from contentful
